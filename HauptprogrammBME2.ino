@@ -12,7 +12,7 @@
 #include <Wire.h>    //BME Libraries 
 #include <BME280I2C.h>
 #include <Wire.h>
-#include "Netzwerk.h"
+#include "Netzwerk_2.h"
 WiFiClient client;
 BME280I2C bme;
 
