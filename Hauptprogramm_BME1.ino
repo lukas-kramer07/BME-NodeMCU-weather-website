@@ -20,12 +20,12 @@ String ssid = SSId;
 String passwort = PASSWORT;
 
 //ssid und Passwort für HotSpot
-const char* ssid_HotSpot = "HotSpot Konrad Lukas";   // Enter SSID here
-const char* password_HotSpot = "123456"; // Enter Password here
+const char* ssid_HotSpot = "";   // Enter SSID here
+const char* password_HotSpot = ""; // Enter Password here
 
 //Apikey und channelId für ThingSpeak Upload
-unsigned long channelID = 1724531;
-const char*  writeAPIKey = "JXI43S3GAKRCG9HY";
+unsigned long channelID = ;
+const char*  writeAPIKey = "";
 
 
 //variabeln für Millis Timer
