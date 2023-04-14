@@ -24,10 +24,10 @@ String passwort = PASSWORT;
 
 //---------------------------------------------------------------------------------------------
 //Apikey und channelId für ThingSpeak Upload
-unsigned long channelID_neben = 1788949;
-const char*  writeAPIKey_neben = "GXWD4XEP6F3WZHJE";
-unsigned long channelID_haupt = 1724531;
-const char*  writeAPIKey_haupt = "JXI43S3GAKRCG9HY";
+unsigned long channelID_neben = ;
+const char*  writeAPIKey_neben = "";
+unsigned long channelID_haupt = ;
+const char*  writeAPIKey_haupt = "";
 
 
 
