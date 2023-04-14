@@ -9,8 +9,8 @@
 #include <BME280I2C.h>    //BME Libraries 
 #include <Wire.h>
 #include <ThingSpeak.h>   //ThingSpeak Library
-#include "index.h"        //html code
-#include "Netzwerk.h"     //Netwerkpasswort und ssid
+#include "index_1.h"        //html code
+#include "Netzwerk_1.h"     //Netwerkpasswort und ssid
 AsyncWebServer server(80);  //Webserver wird auf Port 80 (HTTP) gehostet
 BME280I2C bme;            // Es wird das I2C Protokoll verwendet. 
 WiFiClient client;
