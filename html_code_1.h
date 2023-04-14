@@ -464,6 +464,10 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
 </body>
 <script>
+                          
+  var OpeanWeatherKey = "";
+  var ThingspeakKey = "";
+                          
   function save(){
     if(document.getElementById("input_url").value !== ""){
       document.body.style.backgroundImage = "url(" + document.getElementById("input_url").value + ")"
@@ -480,7 +484,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 
 
   function save_rot(){
-    document.getElementById("savebutton").style.border = "2px solid red"
+    document.getElementById("savebutton").style.border = "2px solid red";
   }
   function Burger_menu() {
     var x = document.getElementById("myTopnav");
@@ -500,15 +504,15 @@ function Anzeige(id){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
-    document.getElementById("Einstellungen_head").innerHTML = "Nicht Gespeichert"
-    document.getElementById("Einstellungen_head").style.color = "red"
+    document.getElementById("Einstellungen_head").innerHTML = "Nicht Gespeichert";
+    document.getElementById("Einstellungen_head").style.color = "red";
   }
   else{
     if(id=="Einstellungen"){
-      document.getElementById("savebutton").style.border = "2px solid #0200E9"
+      document.getElementById("savebutton").style.border = "2px solid #0200E9";
     }
-    document.getElementById("Einstellungen_head").innerHTML = "Einstellungen"
-    document.getElementById("Einstellungen_head").style.color = "var(--text-color)"
+    document.getElementById("Einstellungen_head").innerHTML = "Einstellungen";
+    document.getElementById("Einstellungen_head").style.color = "var(--text-color)";
     hide_content();
     document.getElementById(id).style.display = "block";
   }
@@ -577,7 +581,7 @@ function suche(){
       console.log("nix gefunden");
     }
   }
-  var key = '8c4a0eed2fea58e6f3ae337bbe79e269';
+  var key = OpeanWeatherKey;
   var Stadt = document.getElementById("input_stadt").value;
   var Laendercode = document.getElementById("input_land").value;
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
@@ -637,7 +641,7 @@ function Startseite(){
       console.log("nix gefunden");
     }
   }
-  var key = '8c4a0eed2fea58e6f3ae337bbe79e269';
+  var key = OpeanWeatherKey;
   var Stadt = document.getElementById("input_stadt_Startseite").value;
   var Laendercode = document.getElementById("input_land_Startseite").value;
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
@@ -662,7 +666,7 @@ setInterval(function (){
       console.log("nix gefunden");
     }
   }
-  var key = 'H04SE6XMRVWI571A';
+  var key = '';
   var channel_id = 1724531;
   entries=1;
   request.open("GET","https://api.thingspeak.com/channels/1788949/feeds.json?api_key=XE4F8FNYWGRATCIF&results=" +entries, true);
