@@ -30,7 +30,8 @@ HTML, CSS, and JavaScript (for the web interface)
 To install this project, follow these steps:
 
 Connect the BMI sensor to each NodeMCU.
-Upload the Node_1 code to the first NodeMCU and the Node_2 code to the second NodeMCU.
+Upload the Node_1 code to the first NodeMCU and the Node_2 code to the second NodeMCU using the Arduino IDE. To do this, you'll have to [add the nodeMCU to your Boardmanager](https://www.electronicwings.com/nodemcu/getting-started-with-nodemcu-using-arduino-ide).
+
 Create accounts and obtain API keys for the OpenWeather and ThingSpeak APIs.
 Set up a WiFi network and connect both NodeMCUs to it.
 Modify the Node_1 code with your WiFi network SSID and password, hotspot SSID and password, ThingSpeak channel ID and write API key, and OpenWeather API key.
