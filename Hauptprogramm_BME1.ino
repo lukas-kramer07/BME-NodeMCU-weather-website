@@ -10,14 +10,14 @@
 #include <Wire.h>
 #include <ThingSpeak.h>   //ThingSpeak Library
 #include "html_code.h"        //html code
-#include "Netzwerk_1.h"     //Netwerkpasswort und ssid
+#include "Network_1.h"     //Netwerkpasswort und ssid
 AsyncWebServer server(80);  //Webserver wird auf Port 80 (HTTP) gehostet
 BME280I2C bme;            // Es wird das I2C Protokoll verwendet. 
 WiFiClient client;
 
 //ssid und Passwort für lokales Netwerk
 String ssid = SSId;
-String passwort = PASSWORT;
+String passwort = PASSWORD;
 
 //ssid und Passwort für HotSpot
 const char* ssid_HotSpot = "";   // Enter SSID here
