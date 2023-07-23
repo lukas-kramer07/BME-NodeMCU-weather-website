@@ -1,4 +1,4 @@
-//code für website
+//The html code for the website
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -27,7 +27,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     align-items: center;
 
     }
-    .Stadt{
+    .City{
       margin-top: 110px;
       text-align: center;
       line-height: 10px;
@@ -37,12 +37,12 @@ const char index_html[] PROGMEM = R"rawliteral(
       line-height: 30px;
       width: 350px;
     }
-    .Stadt_name{
+    .City_name{
       font-size: 40px;
       margin-bottom: 0px;
       margin-top: 20px;
     }
-    .Stadt_Startseite{
+    .City_Startseite{
       margin-top: 20px;
       text-align: center;
       line-height: 10px;
@@ -330,8 +330,8 @@ const char index_html[] PROGMEM = R"rawliteral(
     <h1 class="head_time" id="time">ZEIT</h1>
     <h2 class="head_date" id="date">Datum</h2>
     <div class="werte_darstellung">
-      <p class="Stadt_Startseite">
-        <h2 class="Stadt_name" id="Name_Startseite">Name</h2>
+      <p class="City_Startseite">
+        <h2 class="City_name" id="Name_Startseite">Name</h2>
         <pre id="coord_Startseite">coord</pre>
       </p>
       <p class="werte_ow">
@@ -410,8 +410,8 @@ const char index_html[] PROGMEM = R"rawliteral(
     <h2 class="head">Open Weather Map</h2>
     <div class="werte_darstellung">
       <form class="suche">
-        <label for="input_stadt">Stadt</label>
-        <input type="text" id="input_stadt" value="Karlsruhe" placeholder="Stadtname">
+        <label for="input_City">City</label>
+        <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
         
         <label for="input_land">Land</label>
         <input type="text" id="input_land" value="DE" placeholder="ISO 3166 Code">
@@ -419,8 +419,8 @@ const char index_html[] PROGMEM = R"rawliteral(
         
         <input type="button" onclick="suche();" value="suchen">  
       </form>
-      <p class="Stadt">
-        <h3 class="Stadt_name" id="Name">Name</h3>
+      <p class="City">
+        <h3 class="City_name" id="Name">Name</h3>
         <pre id="coord">coord</pre>
       </p>
       <p class="werte_ow">
@@ -444,16 +444,16 @@ const char index_html[] PROGMEM = R"rawliteral(
             <label for="preset">Presets</label>
             <select class="select" onchange="save_rot()" id="preset">
               <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Wolken</option>
-              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">Stadt Tag</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">Stadt Nacht</option>
+              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City Tag</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City Nacht</option>
               <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">Sterne</option>
             </select>
           </div>
           
         <h3 class="Einstellungen_head">Startseite</h3>
           <div class="Einstellungen_input">
-            <label for="input_url">angezeigte Stadt</label>
-            <input oninput="save_rot()" type="text" id="input_stadt_Startseite" placeholder="hier Stadt eingeben" value="Knielingen">
+            <label for="input_url">angezeigte City</label>
+            <input oninput="save_rot()" type="text" id="input_City_Startseite" placeholder="hier City eingeben" value="Knielingen">
             <input oninput="save_rot()" type="text" id="input_land_Startseite" placeholder="hier Laendercode eingeben" value="DE">
           </div>
       <button onclick="save()" id="savebutton" class="save">Speichern</button>
@@ -546,7 +546,7 @@ function suche(){
       console.log(this.responseText);
       console.log(this.readyState);
       var Ergebnis = JSON.parse(this.responseText);
-      if(Stadt == "Bielefeld"){
+      if(City == "Bielefeld"){
         Bielefeld();
       }
       else{
@@ -582,9 +582,9 @@ function suche(){
     }
   }
   var key = OpeanWeatherKey;
-  var Stadt = document.getElementById("input_stadt").value;
+  var City = document.getElementById("input_City").value;
   var Laendercode = document.getElementById("input_land").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 
   
@@ -642,9 +642,9 @@ function Startseite(){
     }
   }
   var key = OpeanWeatherKey;
-  var Stadt = document.getElementById("input_stadt_Startseite").value;
+  var City = document.getElementById("input_City_Startseite").value;
   var Laendercode = document.getElementById("input_land_Startseite").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
 
