@@ -32,7 +32,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-align: center;
       line-height: 10px;
     }
-    .werte_ow{
+    .values_ow{
       margin-top: 30px;
       line-height: 30px;
       width: 350px;
@@ -254,7 +254,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     #WetterApp{
       display: block;
     }
-  .werte_darstellung{
+  .values_darstellung{
     background-color: rgba(72, 81, 90, 0.7);
     height: min-content;
     width: max-content;
@@ -276,7 +276,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     .Einheit { 
       font-size: 1.5rem; 
     }
-    .BmeWerte{
+    .Bmevalues{
       font-size: 1.5rem;
       vertical-align:middle;
       padding-bottom: 15px;
@@ -329,12 +329,12 @@ const char index_html[] PROGMEM = R"rawliteral(
   <div class="content"id="WetterApp">
     <h1 class="head_time" id="time">ZEIT</h1>
     <h2 class="head_date" id="date">Datum</h2>
-    <div class="werte_darstellung">
+    <div class="values_darstellung">
       <p class="City_Startseite">
         <h2 class="City_name" id="Name_Startseite">Name</h2>
         <pre id="coord_Startseite">coord</pre>
       </p>
-      <p class="werte_ow">
+      <p class="values_ow">
         <span name="Name" class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung_Startseite"></span><br>
         <span name="Name" class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp_Startseite"></span><br>
         <span class="ow_links">Temperatur Verlauf</span><span class="ow_rechts">
@@ -350,28 +350,28 @@ const char index_html[] PROGMEM = R"rawliteral(
   <div class="content"id="BME1">
     
     <h2 class="head">BME 1</h2>
-    <div class="werte_darstellung">
+    <div class="values_darstellung">
       <p class="Wert">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BmeWerte">Temperatur</span> 
+        <span class="Bmevalues">Temperatur</span> 
         <span id="Temperatur_BME1">%Temperatur_BME1%</span>
         <sup class="Einheit">&deg;C</sup>
       </p>
       <p class="Wert">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BmeWerte">Feuchte</span>
+        <span class="Bmevalues">Feuchte</span>
         <span id="Feuchte_BME1">%Feuchte_BME1%</span>
         <sup class="Einheit">&percnt;</sup>
       </p>
       <p class="Wert">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BmeWerte">Druck</span>
+        <span class="Bmevalues">Druck</span>
         <span id="Druck_BME1">%Druck_BME1%</span>
         <sup class="Einheit">hPa</sup>
       </p>
       <p class="Wert">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BmeWerte">Verbindung</span>
+        <span class="Bmevalues">Verbindung</span>
         <span id="rssi_BME1">%rssi_BME1%</span>
         <sup class="Einheit">dBm</sup>
       </p>
@@ -379,28 +379,28 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
   <div class="content" id="BME2">
     <h2 class="head">BME 2</h2>
-    <div class="werte_darstellung">
+    <div class="values_darstellung">
       <p class="Wert">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BmeWerte">Temperatur</span> 
+        <span class="Bmevalues">Temperatur</span> 
         <span id="Temperatur_BME2"></span>
         <sup class="Einheit">&deg;C</sup>
       </p>
       <p class="Wert">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BmeWerte">Feuchte</span>
+        <span class="Bmevalues">Feuchte</span>
         <span id="Feuchte_BME2"></span>
         <sup class="Einheit">&percnt;</sup>
       </p>
       <p class="Wert">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BmeWerte">Druck</span>
+        <span class="Bmevalues">Druck</span>
         <span id="Druck_BME2"></span>
         <sup class="Einheit">hPa</sup>
       </p>
       <p class="Wert">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BmeWerte">Verbindung</span>
+        <span class="Bmevalues">Verbindung</span>
         <span id="rssi_BME2"></span>
         <sup class="Einheit">dBm</sup>
       </p>
@@ -408,7 +408,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
   <div class="content" id="OpenWeather">
     <h2 class="head">Open Weather Map</h2>
-    <div class="werte_darstellung">
+    <div class="values_darstellung">
       <form class="suche">
         <label for="input_City">City</label>
         <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
@@ -423,7 +423,7 @@ const char index_html[] PROGMEM = R"rawliteral(
         <h3 class="City_name" id="Name">Name</h3>
         <pre id="coord">coord</pre>
       </p>
-      <p class="werte_ow">
+      <p class="values_ow">
         <span class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung"></span><br>
         <span class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp"></span><br>
         <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte"></span><br>
@@ -676,7 +676,7 @@ setInterval(function (){
 
 
 //-----------------------------------------------------------------------------------------------------
-//Funktionen für die Abfrage der BME1 Werte
+//Funktionen für die Abfrage der BME1 values
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
