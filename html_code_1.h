@@ -67,14 +67,14 @@ const char index_html[] PROGMEM = R"rawliteral(
     .ow_right{
       float: right;
     }
-    #Einstellungen{
+    #Settings{
       background-color: rgba(52, 52, 52, 1);
       padding-top: 2vh;
       height: 100vh;
       width: 100%%; //library braucht doppelte %, weil der template processor diesen css code ansonsten nicht verarbeitet
       color: var(--text-color);
     }
-    .Einstellungen_bereiche{
+    .Settings_bereiche{
       background-color: rgb(24,24,24, 1);
       height: 550px;
       width: 370px;
@@ -87,7 +87,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       flex-direction: column;
       
     }
-    .Einstellungen_input{
+    .Settings_input{
       margin-top: 8px;
       width: 100%%;
       margin-bottom: 0px;
@@ -96,7 +96,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       flex-direction: column;
       justify-content: space-evenly;  
     }
-    .Einstellungen_head{
+    .Settings_head{
       margin-bottom: 15px;
       margin-top: 30px;
     }
@@ -323,7 +323,7 @@ const char index_html[] PROGMEM = R"rawliteral(
         <a onclick="Anzeige('BME2')">BME 2</a>
       </div>
     </div> 
-    <a onclick="Anzeige('Einstellungen')">Einstellungen</a>
+    <a onclick="Anzeige('Settings')">Settings</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
   <div class="content"id="WetterApp">
@@ -434,11 +434,11 @@ const char index_html[] PROGMEM = R"rawliteral(
     <br>
     <br>
   </div>
-  <div id="Einstellungen">
-    <h2 class="head" id="Einstellungen_head">Einstellungen</h2>
-    <div class="Einstellungen_bereiche">
-      <h3 class="Einstellungen_head">Allgemein</h3>
-          <div class="Einstellungen_input">
+  <div id="Settings">
+    <h2 class="head" id="Settings_head">Settings</h2>
+    <div class="Settings_bereiche">
+      <h3 class="Settings_head">Allgemein</h3>
+          <div class="Settings_input">
             <label for="input_url">Hintergrundbild</label>
             <input oninput="save_rot()" type="text" id="input_url" placeholder="hier url eingeben">
             <label for="preset">Presets</label>
@@ -450,8 +450,8 @@ const char index_html[] PROGMEM = R"rawliteral(
             </select>
           </div>
           
-        <h3 class="Einstellungen_head">homepage</h3>
-          <div class="Einstellungen_input">
+        <h3 class="Settings_head">homepage</h3>
+          <div class="Settings_input">
             <label for="input_url">angezeigte City</label>
             <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="hier City eingeben" value="Knielingen">
             <input oninput="save_rot()" type="text" id="input_land_homepage" placeholder="hier Laendercode eingeben" value="DE">
@@ -504,15 +504,15 @@ function Anzeige(id){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
-    document.getElementById("Einstellungen_head").innerHTML = "Nicht Gespeichert";
-    document.getElementById("Einstellungen_head").style.color = "red";
+    document.getElementById("Settings_head").innerHTML = "Nicht Gespeichert";
+    document.getElementById("Settings_head").style.color = "red";
   }
   else{
-    if(id=="Einstellungen"){
+    if(id=="Settings"){
       document.getElementById("savebutton").style.border = "2px solid #0200E9";
     }
-    document.getElementById("Einstellungen_head").innerHTML = "Einstellungen";
-    document.getElementById("Einstellungen_head").style.color = "var(--text-color)";
+    document.getElementById("Settings_head").innerHTML = "Settings";
+    document.getElementById("Settings_head").style.color = "var(--text-color)";
     hide_content();
     document.getElementById(id).style.display = "block";
   }
@@ -524,7 +524,7 @@ function hide_content(){
   document.getElementById("BME1").style.display = "none";
   document.getElementById("BME2").style.display = "none";
   document.getElementById("OpenWeather").style.display = "none";
-  document.getElementById("Einstellungen").style.display = "none";
+  document.getElementById("Settings").style.display = "none";
 }
 window.onload= ()=>{
   hide_content();
