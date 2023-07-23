@@ -42,7 +42,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       margin-bottom: 0px;
       margin-top: 20px;
     }
-    .City_Startseite{
+    .City_homepage{
       margin-top: 20px;
       text-align: center;
       line-height: 10px;
@@ -330,19 +330,19 @@ const char index_html[] PROGMEM = R"rawliteral(
     <h1 class="head_time" id="time">ZEIT</h1>
     <h2 class="head_date" id="date">Datum</h2>
     <div class="values_darstellung">
-      <p class="City_Startseite">
-        <h2 class="City_name" id="Name_Startseite">Name</h2>
-        <pre id="coord_Startseite">coord</pre>
+      <p class="City_homepage">
+        <h2 class="City_name" id="Name_homepage">Name</h2>
+        <pre id="coord_homepage">coord</pre>
       </p>
       <p class="values_ow">
-        <span name="Name" class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung_Startseite"></span><br>
-        <span name="Name" class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp_Startseite"></span><br>
+        <span name="Name" class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung_homepage"></span><br>
+        <span name="Name" class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp_homepage"></span><br>
         <span class="ow_links">Temperatur Verlauf</span><span class="ow_rechts">
-          <span id="Temp_min_Startseite"></span> - <span id="Temp_max_Startseite"></span>
+          <span id="Temp_min_homepage"></span> - <span id="Temp_max_homepage"></span>
         </span><br>
-        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte_Startseite"></span><br>
-        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck_Startseite"></span><br>
-        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind_Startseite"></span><br>
+        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte_homepage"></span><br>
+        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck_homepage"></span><br>
+        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind_homepage"></span><br>
         
       </p>
     </div>
@@ -450,11 +450,11 @@ const char index_html[] PROGMEM = R"rawliteral(
             </select>
           </div>
           
-        <h3 class="Einstellungen_head">Startseite</h3>
+        <h3 class="Einstellungen_head">homepage</h3>
           <div class="Einstellungen_input">
             <label for="input_url">angezeigte City</label>
-            <input oninput="save_rot()" type="text" id="input_City_Startseite" placeholder="hier City eingeben" value="Knielingen">
-            <input oninput="save_rot()" type="text" id="input_land_Startseite" placeholder="hier Laendercode eingeben" value="DE">
+            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="hier City eingeben" value="Knielingen">
+            <input oninput="save_rot()" type="text" id="input_land_homepage" placeholder="hier Laendercode eingeben" value="DE">
           </div>
       <button onclick="save()" id="savebutton" class="save">Speichern</button>
       
@@ -477,7 +477,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       document.body.style.backgroundImage = "url(" + document.getElementById("preset").value + ")"
     }
     document.getElementById("savebutton").style.border = "2px solid lime";
-    Startseite();
+    homepage();
     setTimeout(function(){Anzeige("WetterApp")}, 100);
     
   }
@@ -528,7 +528,7 @@ function hide_content(){
 }
 window.onload= ()=>{
   hide_content();
-  Startseite();
+  homepage();
   document.getElementById("WetterApp").style.display = "block";
 }
 
@@ -600,40 +600,40 @@ function Bielefeld(){
   document.getElementById("coord").innerHTML = "Error 404: Not found";
 }
 setInterval(function (){
-  Startseite();
+  homepage();
 }, 20000);
-function Startseite(){
+function homepage(){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
       var Ergebnis = JSON.parse(this.responseText);
-      document.getElementById("Name_Startseite").innerHTML = Ergebnis.name;
+      document.getElementById("Name_homepage").innerHTML = Ergebnis.name;
       if(Ergebnis.coord.lon < 0){
         if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
         }
         else{
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
         }
       }
       else{
         if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
         }
         else{
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
         }
       }
       
-      document.getElementById("Beschreibung_Startseite").innerHTML = Ergebnis.weather[0].description;
-      document.getElementById("Temp_Startseite").innerHTML = Ergebnis.main.temp + " " + "&degC";
-      document.getElementById("Temp_min_Startseite").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
-      document.getElementById("Temp_max_Startseite").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
-      document.getElementById("Feuchte_Startseite").innerHTML = Ergebnis.main.humidity + " %";
-      document.getElementById("Druck_Startseite").innerHTML = Ergebnis.main.pressure + " hPa";
-      document.getElementById("Wind_Startseite").innerHTML = Ergebnis.wind.speed + " m/s";
+      document.getElementById("Beschreibung_homepage").innerHTML = Ergebnis.weather[0].description;
+      document.getElementById("Temp_homepage").innerHTML = Ergebnis.main.temp + " " + "&degC";
+      document.getElementById("Temp_min_homepage").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
+      document.getElementById("Temp_max_homepage").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
+      document.getElementById("Feuchte_homepage").innerHTML = Ergebnis.main.humidity + " %";
+      document.getElementById("Druck_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
+      document.getElementById("Wind_homepage").innerHTML = Ergebnis.wind.speed + " m/s";
       
       
     }
@@ -642,8 +642,8 @@ function Startseite(){
     }
   }
   var key = OpeanWeatherKey;
-  var City = document.getElementById("input_City_Startseite").value;
-  var Laendercode = document.getElementById("input_land_Startseite").value;
+  var City = document.getElementById("input_City_homepage").value;
+  var Laendercode = document.getElementById("input_land_homepage").value;
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
