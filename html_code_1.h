@@ -61,10 +61,10 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-decoration:none;
       cursor: pointer;
     }
-    .ow_links{
+    .ow_left{
       float: left;
     }
-    .ow_rechts{
+    .ow_right{
       float: right;
     }
     #Einstellungen{
@@ -335,14 +335,14 @@ const char index_html[] PROGMEM = R"rawliteral(
         <pre id="coord_homepage">coord</pre>
       </p>
       <p class="values_ow">
-        <span name="Name" class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung_homepage"></span><br>
-        <span name="Name" class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp_homepage"></span><br>
-        <span class="ow_links">Temperatur Verlauf</span><span class="ow_rechts">
+        <span name="Name" class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung_homepage"></span><br>
+        <span name="Name" class="ow_left">Temperatur</span><span class="ow_right" id="Temp_homepage"></span><br>
+        <span class="ow_left">Temperatur Verlauf</span><span class="ow_right">
           <span id="Temp_min_homepage"></span> - <span id="Temp_max_homepage"></span>
         </span><br>
-        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte_homepage"></span><br>
-        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck_homepage"></span><br>
-        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind_homepage"></span><br>
+        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte_homepage"></span><br>
+        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck_homepage"></span><br>
+        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind_homepage"></span><br>
         
       </p>
     </div>
@@ -424,11 +424,11 @@ const char index_html[] PROGMEM = R"rawliteral(
         <pre id="coord">coord</pre>
       </p>
       <p class="values_ow">
-        <span class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung"></span><br>
-        <span class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp"></span><br>
-        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte"></span><br>
-        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck"></span><br>
-        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind"></span><br>
+        <span class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung"></span><br>
+        <span class="ow_left">Temperatur</span><span class="ow_right" id="Temp"></span><br>
+        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte"></span><br>
+        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck"></span><br>
+        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind"></span><br>
       </p>
     </div>
     <br>
