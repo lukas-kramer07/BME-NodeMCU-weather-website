@@ -74,7 +74,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       width: 100%%; //library braucht doppelte %, weil der template processor diesen css code ansonsten nicht verarbeitet
       color: var(--text-color);
     }
-    .Settings_bereiche{
+    .Settings_fields{
       background-color: rgb(24,24,24, 1);
       height: 550px;
       width: 370px;
@@ -251,10 +251,10 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-align: center;
       justify-content: center;
     }
-    #WetterApp{
+    # WeatherApp{
       display: block;
     }
-  .values_darstellung{
+  .values_depiction{
     background-color: rgba(72, 81, 90, 0.7);
     height: min-content;
     width: max-content;
@@ -270,13 +270,13 @@ const char index_html[] PROGMEM = R"rawliteral(
       font-size: 27px;
       margin-top: 10px;
     }
-    .Wert {
+    .value {
        font-size: 2.5rem; 
       }
     .Einheit { 
       font-size: 1.5rem; 
     }
-    .Bmevalues{
+    .BMEvalues{
       font-size: 1.5rem;
       vertical-align:middle;
       padding-bottom: 15px;
@@ -312,7 +312,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <a class="active" onclick="Anzeige('WetterApp')">WetterApp</a>
+    <a class="active" onclick="Anzeige(' WeatherApp')"> WeatherApp</a>
     <a onclick="Anzeige('OpenWeather')">OpenWeather</a>
     <div class="dropdown">
       <button class="dropbtn">BME Sensoren 
@@ -326,10 +326,10 @@ const char index_html[] PROGMEM = R"rawliteral(
     <a onclick="Anzeige('Settings')">Settings</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
-  <div class="content"id="WetterApp">
+  <div class="content"id=" WeatherApp">
     <h1 class="head_time" id="time">ZEIT</h1>
     <h2 class="head_date" id="date">Datum</h2>
-    <div class="values_darstellung">
+    <div class="values_depiction">
       <p class="City_homepage">
         <h2 class="City_name" id="Name_homepage">Name</h2>
         <pre id="coord_homepage">coord</pre>
@@ -350,28 +350,28 @@ const char index_html[] PROGMEM = R"rawliteral(
   <div class="content"id="BME1">
     
     <h2 class="head">BME 1</h2>
-    <div class="values_darstellung">
-      <p class="Wert">
+    <div class="values_depiction">
+      <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="Bmevalues">Temperatur</span> 
+        <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME1">%Temperatur_BME1%</span>
         <sup class="Einheit">&deg;C</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="Bmevalues">Feuchte</span>
+        <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME1">%Feuchte_BME1%</span>
         <sup class="Einheit">&percnt;</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="Bmevalues">Druck</span>
+        <span class="BMEvalues">Druck</span>
         <span id="Druck_BME1">%Druck_BME1%</span>
         <sup class="Einheit">hPa</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="Bmevalues">Verbindung</span>
+        <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME1">%rssi_BME1%</span>
         <sup class="Einheit">dBm</sup>
       </p>
@@ -379,28 +379,28 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
   <div class="content" id="BME2">
     <h2 class="head">BME 2</h2>
-    <div class="values_darstellung">
-      <p class="Wert">
+    <div class="values_depiction">
+      <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="Bmevalues">Temperatur</span> 
+        <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME2"></span>
         <sup class="Einheit">&deg;C</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="Bmevalues">Feuchte</span>
+        <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME2"></span>
         <sup class="Einheit">&percnt;</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="Bmevalues">Druck</span>
+        <span class="BMEvalues">Druck</span>
         <span id="Druck_BME2"></span>
         <sup class="Einheit">hPa</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="Bmevalues">Verbindung</span>
+        <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME2"></span>
         <sup class="Einheit">dBm</sup>
       </p>
@@ -408,7 +408,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
   <div class="content" id="OpenWeather">
     <h2 class="head">Open Weather Map</h2>
-    <div class="values_darstellung">
+    <div class="values_depiction">
       <form class="suche">
         <label for="input_City">City</label>
         <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
@@ -436,7 +436,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   </div>
   <div id="Settings">
     <h2 class="head" id="Settings_head">Settings</h2>
-    <div class="Settings_bereiche">
+    <div class="Settings_fields">
       <h3 class="Settings_head">Allgemein</h3>
           <div class="Settings_input">
             <label for="input_url">Hintergrundbild</label>
@@ -478,7 +478,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     }
     document.getElementById("savebutton").style.border = "2px solid lime";
     homepage();
-    setTimeout(function(){Anzeige("WetterApp")}, 100);
+    setTimeout(function(){Anzeige(" WeatherApp")}, 100);
     
   }
 
@@ -500,7 +500,7 @@ function Anzeige(id){
   if(id == "OpenWeather"){
     suche();
   }
-  if(!(id == "WetterApp")){
+  if(!(id == " WeatherApp")){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
@@ -520,7 +520,7 @@ function Anzeige(id){
 
 
 function hide_content(){
-  document.getElementById("WetterApp").style.display = "none";
+  document.getElementById(" WeatherApp").style.display = "none";
   document.getElementById("BME1").style.display = "none";
   document.getElementById("BME2").style.display = "none";
   document.getElementById("OpenWeather").style.display = "none";
@@ -529,7 +529,7 @@ function hide_content(){
 window.onload= ()=>{
   hide_content();
   homepage();
-  document.getElementById("WetterApp").style.display = "block";
+  document.getElementById(" WeatherApp").style.display = "block";
 }
 
 setInterval(function(){
