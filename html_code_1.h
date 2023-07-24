@@ -1,4 +1,4 @@
-//code für website
+//The html code for the website
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -27,22 +27,22 @@ const char index_html[] PROGMEM = R"rawliteral(
     align-items: center;
 
     }
-    .Stadt{
+    .City{
       margin-top: 110px;
       text-align: center;
       line-height: 10px;
     }
-    .werte_ow{
+    .values_ow{
       margin-top: 30px;
       line-height: 30px;
       width: 350px;
     }
-    .Stadt_name{
+    .City_name{
       font-size: 40px;
       margin-bottom: 0px;
       margin-top: 20px;
     }
-    .Stadt_Startseite{
+    .City_homepage{
       margin-top: 20px;
       text-align: center;
       line-height: 10px;
@@ -61,20 +61,20 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-decoration:none;
       cursor: pointer;
     }
-    .ow_links{
+    .ow_left{
       float: left;
     }
-    .ow_rechts{
+    .ow_right{
       float: right;
     }
-    #Einstellungen{
+    #Settings{
       background-color: rgba(52, 52, 52, 1);
       padding-top: 2vh;
       height: 100vh;
       width: 100%%; //library braucht doppelte %, weil der template processor diesen css code ansonsten nicht verarbeitet
       color: var(--text-color);
     }
-    .Einstellungen_bereiche{
+    .Settings_fields{
       background-color: rgb(24,24,24, 1);
       height: 550px;
       width: 370px;
@@ -87,7 +87,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       flex-direction: column;
       
     }
-    .Einstellungen_input{
+    .Settings_input{
       margin-top: 8px;
       width: 100%%;
       margin-bottom: 0px;
@@ -96,7 +96,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       flex-direction: column;
       justify-content: space-evenly;  
     }
-    .Einstellungen_head{
+    .Settings_head{
       margin-bottom: 15px;
       margin-top: 30px;
     }
@@ -251,10 +251,10 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-align: center;
       justify-content: center;
     }
-    #WetterApp{
+    # WeatherApp{
       display: block;
     }
-  .werte_darstellung{
+  .values_depiction{
     background-color: rgba(72, 81, 90, 0.7);
     height: min-content;
     width: max-content;
@@ -270,13 +270,13 @@ const char index_html[] PROGMEM = R"rawliteral(
       font-size: 27px;
       margin-top: 10px;
     }
-    .Wert {
+    .value {
        font-size: 2.5rem; 
       }
-    .Einheit { 
+    .unit { 
       font-size: 1.5rem; 
     }
-    .BmeWerte{
+    .BMEvalues{
       font-size: 1.5rem;
       vertical-align:middle;
       padding-bottom: 15px;
@@ -287,7 +287,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       color: #FFFFFF;
       font-family: 'Josefin Sans', sans-serif;
     }
-    .suche{
+    .search{
       height: 170px;
       width: 350px;
       font-size: 1.8rem;
@@ -312,7 +312,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <a class="active" onclick="Anzeige('WetterApp')">WetterApp</a>
+    <a class="active" onclick="Anzeige(' WeatherApp')"> WeatherApp</a>
     <a onclick="Anzeige('OpenWeather')">OpenWeather</a>
     <div class="dropdown">
       <button class="dropbtn">BME Sensoren 
@@ -323,26 +323,26 @@ const char index_html[] PROGMEM = R"rawliteral(
         <a onclick="Anzeige('BME2')">BME 2</a>
       </div>
     </div> 
-    <a onclick="Anzeige('Einstellungen')">Einstellungen</a>
+    <a onclick="Anzeige('Settings')">Settings</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
-  <div class="content"id="WetterApp">
+  <div class="content"id=" WeatherApp">
     <h1 class="head_time" id="time">ZEIT</h1>
     <h2 class="head_date" id="date">Datum</h2>
-    <div class="werte_darstellung">
-      <p class="Stadt_Startseite">
-        <h2 class="Stadt_name" id="Name_Startseite">Name</h2>
-        <pre id="coord_Startseite">coord</pre>
+    <div class="values_depiction">
+      <p class="City_homepage">
+        <h2 class="City_name" id="Name_homepage">Name</h2>
+        <pre id="coord_homepage">coord</pre>
       </p>
-      <p class="werte_ow">
-        <span name="Name" class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung_Startseite"></span><br>
-        <span name="Name" class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp_Startseite"></span><br>
-        <span class="ow_links">Temperatur Verlauf</span><span class="ow_rechts">
-          <span id="Temp_min_Startseite"></span> - <span id="Temp_max_Startseite"></span>
+      <p class="values_ow">
+        <span name="Name" class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung_homepage"></span><br>
+        <span name="Name" class="ow_left">Temperatur</span><span class="ow_right" id="Temp_homepage"></span><br>
+        <span class="ow_left">Temperatur Verlauf</span><span class="ow_right">
+          <span id="Temp_min_homepage"></span> - <span id="Temp_max_homepage"></span>
         </span><br>
-        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte_Startseite"></span><br>
-        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck_Startseite"></span><br>
-        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind_Startseite"></span><br>
+        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte_homepage"></span><br>
+        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck_homepage"></span><br>
+        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind_homepage"></span><br>
         
       </p>
     </div>
@@ -350,111 +350,111 @@ const char index_html[] PROGMEM = R"rawliteral(
   <div class="content"id="BME1">
     
     <h2 class="head">BME 1</h2>
-    <div class="werte_darstellung">
-      <p class="Wert">
+    <div class="values_depiction">
+      <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BmeWerte">Temperatur</span> 
+        <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME1">%Temperatur_BME1%</span>
-        <sup class="Einheit">&deg;C</sup>
+        <sup class="unit">&deg;C</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BmeWerte">Feuchte</span>
+        <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME1">%Feuchte_BME1%</span>
-        <sup class="Einheit">&percnt;</sup>
+        <sup class="unit">&percnt;</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BmeWerte">Druck</span>
+        <span class="BMEvalues">Druck</span>
         <span id="Druck_BME1">%Druck_BME1%</span>
-        <sup class="Einheit">hPa</sup>
+        <sup class="unit">hPa</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BmeWerte">Verbindung</span>
+        <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME1">%rssi_BME1%</span>
-        <sup class="Einheit">dBm</sup>
+        <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
   <div class="content" id="BME2">
     <h2 class="head">BME 2</h2>
-    <div class="werte_darstellung">
-      <p class="Wert">
+    <div class="values_depiction">
+      <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BmeWerte">Temperatur</span> 
+        <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME2"></span>
-        <sup class="Einheit">&deg;C</sup>
+        <sup class="unit">&deg;C</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BmeWerte">Feuchte</span>
+        <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME2"></span>
-        <sup class="Einheit">&percnt;</sup>
+        <sup class="unit">&percnt;</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BmeWerte">Druck</span>
+        <span class="BMEvalues">Druck</span>
         <span id="Druck_BME2"></span>
-        <sup class="Einheit">hPa</sup>
+        <sup class="unit">hPa</sup>
       </p>
-      <p class="Wert">
+      <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BmeWerte">Verbindung</span>
+        <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME2"></span>
-        <sup class="Einheit">dBm</sup>
+        <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
   <div class="content" id="OpenWeather">
     <h2 class="head">Open Weather Map</h2>
-    <div class="werte_darstellung">
-      <form class="suche">
-        <label for="input_stadt">Stadt</label>
-        <input type="text" id="input_stadt" value="Karlsruhe" placeholder="Stadtname">
+    <div class="values_depiction">
+      <form class="search">
+        <label for="input_City">City</label>
+        <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
         
         <label for="input_land">Land</label>
         <input type="text" id="input_land" value="DE" placeholder="ISO 3166 Code">
         
         
-        <input type="button" onclick="suche();" value="suchen">  
+        <input type="button" onclick="search();" value="suchen">  
       </form>
-      <p class="Stadt">
-        <h3 class="Stadt_name" id="Name">Name</h3>
+      <p class="City">
+        <h3 class="City_name" id="Name">Name</h3>
         <pre id="coord">coord</pre>
       </p>
-      <p class="werte_ow">
-        <span class="ow_links">Beschreibung</span><span class="ow_rechts" id="Beschreibung"></span><br>
-        <span class="ow_links">Temperatur</span><span class="ow_rechts" id="Temp"></span><br>
-        <span class="ow_links">Luftfeuchte</span><span class="ow_rechts" id="Feuchte"></span><br>
-        <span class="ow_links">Luftdruck</span><span class="ow_rechts" id="Druck"></span><br>
-        <span class="ow_links">Windgeschwindigkeit</span><span class="ow_rechts" id="Wind"></span><br>
+      <p class="values_ow">
+        <span class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung"></span><br>
+        <span class="ow_left">Temperatur</span><span class="ow_right" id="Temp"></span><br>
+        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte"></span><br>
+        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck"></span><br>
+        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind"></span><br>
       </p>
     </div>
     <br>
     <br>
   </div>
-  <div id="Einstellungen">
-    <h2 class="head" id="Einstellungen_head">Einstellungen</h2>
-    <div class="Einstellungen_bereiche">
-      <h3 class="Einstellungen_head">Allgemein</h3>
-          <div class="Einstellungen_input">
+  <div id="Settings">
+    <h2 class="head" id="Settings_head">Settings</h2>
+    <div class="Settings_fields">
+      <h3 class="Settings_head">Allgemein</h3>
+          <div class="Settings_input">
             <label for="input_url">Hintergrundbild</label>
             <input oninput="save_rot()" type="text" id="input_url" placeholder="hier url eingeben">
             <label for="preset">Presets</label>
             <select class="select" onchange="save_rot()" id="preset">
               <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Wolken</option>
-              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">Stadt Tag</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">Stadt Nacht</option>
+              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City Tag</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City Nacht</option>
               <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">Sterne</option>
             </select>
           </div>
           
-        <h3 class="Einstellungen_head">Startseite</h3>
-          <div class="Einstellungen_input">
-            <label for="input_url">angezeigte Stadt</label>
-            <input oninput="save_rot()" type="text" id="input_stadt_Startseite" placeholder="hier Stadt eingeben" value="Knielingen">
-            <input oninput="save_rot()" type="text" id="input_land_Startseite" placeholder="hier Laendercode eingeben" value="DE">
+        <h3 class="Settings_head">homepage</h3>
+          <div class="Settings_input">
+            <label for="input_url">angezeigte City</label>
+            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="hier City eingeben" value="Knielingen">
+            <input oninput="save_rot()" type="text" id="input_land_homepage" placeholder="hier Laendercode eingeben" value="DE">
           </div>
       <button onclick="save()" id="savebutton" class="save">Speichern</button>
       
@@ -477,8 +477,8 @@ const char index_html[] PROGMEM = R"rawliteral(
       document.body.style.backgroundImage = "url(" + document.getElementById("preset").value + ")"
     }
     document.getElementById("savebutton").style.border = "2px solid lime";
-    Startseite();
-    setTimeout(function(){Anzeige("WetterApp")}, 100);
+    homepage();
+    setTimeout(function(){Anzeige(" WeatherApp")}, 100);
     
   }
 
@@ -498,21 +498,21 @@ const char index_html[] PROGMEM = R"rawliteral(
 function Anzeige(id){
   
   if(id == "OpenWeather"){
-    suche();
+    search();
   }
-  if(!(id == "WetterApp")){
+  if(!(id == " WeatherApp")){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
-    document.getElementById("Einstellungen_head").innerHTML = "Nicht Gespeichert";
-    document.getElementById("Einstellungen_head").style.color = "red";
+    document.getElementById("Settings_head").innerHTML = "Nicht Gespeichert";
+    document.getElementById("Settings_head").style.color = "red";
   }
   else{
-    if(id=="Einstellungen"){
+    if(id=="Settings"){
       document.getElementById("savebutton").style.border = "2px solid #0200E9";
     }
-    document.getElementById("Einstellungen_head").innerHTML = "Einstellungen";
-    document.getElementById("Einstellungen_head").style.color = "var(--text-color)";
+    document.getElementById("Settings_head").innerHTML = "Settings";
+    document.getElementById("Settings_head").style.color = "var(--text-color)";
     hide_content();
     document.getElementById(id).style.display = "block";
   }
@@ -520,16 +520,16 @@ function Anzeige(id){
 
 
 function hide_content(){
-  document.getElementById("WetterApp").style.display = "none";
+  document.getElementById(" WeatherApp").style.display = "none";
   document.getElementById("BME1").style.display = "none";
   document.getElementById("BME2").style.display = "none";
   document.getElementById("OpenWeather").style.display = "none";
-  document.getElementById("Einstellungen").style.display = "none";
+  document.getElementById("Settings").style.display = "none";
 }
 window.onload= ()=>{
   hide_content();
-  Startseite();
-  document.getElementById("WetterApp").style.display = "block";
+  homepage();
+  document.getElementById(" WeatherApp").style.display = "block";
 }
 
 setInterval(function(){
@@ -537,7 +537,7 @@ setInterval(function(){
   document.getElementById("time").innerHTML = (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
   document.getElementById("date").innerHTML = (("0"+dt.getDate()).slice(-2) +"."+ ("0"+(dt.getMonth()+1)).slice(-2))   +"."+ (dt.getFullYear());
 },100);
-function suche(){
+function search(){
   
   
   const request = new XMLHttpRequest();
@@ -546,7 +546,7 @@ function suche(){
       console.log(this.responseText);
       console.log(this.readyState);
       var Ergebnis = JSON.parse(this.responseText);
-      if(Stadt == "Bielefeld"){
+      if(City == "Bielefeld"){
         Bielefeld();
       }
       else{
@@ -582,9 +582,9 @@ function suche(){
     }
   }
   var key = OpeanWeatherKey;
-  var Stadt = document.getElementById("input_stadt").value;
+  var City = document.getElementById("input_City").value;
   var Laendercode = document.getElementById("input_land").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 
   
@@ -600,40 +600,40 @@ function Bielefeld(){
   document.getElementById("coord").innerHTML = "Error 404: Not found";
 }
 setInterval(function (){
-  Startseite();
+  homepage();
 }, 20000);
-function Startseite(){
+function homepage(){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
       var Ergebnis = JSON.parse(this.responseText);
-      document.getElementById("Name_Startseite").innerHTML = Ergebnis.name;
+      document.getElementById("Name_homepage").innerHTML = Ergebnis.name;
       if(Ergebnis.coord.lon < 0){
         if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
         }
         else{
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
         }
       }
       else{
         if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
         }
         else{
-          document.getElementById("coord_Startseite").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
         }
       }
       
-      document.getElementById("Beschreibung_Startseite").innerHTML = Ergebnis.weather[0].description;
-      document.getElementById("Temp_Startseite").innerHTML = Ergebnis.main.temp + " " + "&degC";
-      document.getElementById("Temp_min_Startseite").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
-      document.getElementById("Temp_max_Startseite").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
-      document.getElementById("Feuchte_Startseite").innerHTML = Ergebnis.main.humidity + " %";
-      document.getElementById("Druck_Startseite").innerHTML = Ergebnis.main.pressure + " hPa";
-      document.getElementById("Wind_Startseite").innerHTML = Ergebnis.wind.speed + " m/s";
+      document.getElementById("Beschreibung_homepage").innerHTML = Ergebnis.weather[0].description;
+      document.getElementById("Temp_homepage").innerHTML = Ergebnis.main.temp + " " + "&degC";
+      document.getElementById("Temp_min_homepage").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
+      document.getElementById("Temp_max_homepage").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
+      document.getElementById("Feuchte_homepage").innerHTML = Ergebnis.main.humidity + " %";
+      document.getElementById("Druck_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
+      document.getElementById("Wind_homepage").innerHTML = Ergebnis.wind.speed + " m/s";
       
       
     }
@@ -642,9 +642,9 @@ function Startseite(){
     }
   }
   var key = OpeanWeatherKey;
-  var Stadt = document.getElementById("input_stadt_Startseite").value;
-  var Laendercode = document.getElementById("input_land_Startseite").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + Stadt+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  var City = document.getElementById("input_City_homepage").value;
+  var Laendercode = document.getElementById("input_land_homepage").value;
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
 
@@ -676,7 +676,7 @@ setInterval(function (){
 
 
 //-----------------------------------------------------------------------------------------------------
-//Funktionen für die Abfrage der BME1 Werte
+//Funktionen für die Abfrage der BME1 values
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
