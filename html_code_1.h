@@ -273,7 +273,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     .value {
        font-size: 2.5rem; 
       }
-    .Einheit { 
+    .unit { 
       font-size: 1.5rem; 
     }
     .BMEvalues{
@@ -287,7 +287,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       color: #FFFFFF;
       font-family: 'Josefin Sans', sans-serif;
     }
-    .suche{
+    .search{
       height: 170px;
       width: 350px;
       font-size: 1.8rem;
@@ -355,25 +355,25 @@ const char index_html[] PROGMEM = R"rawliteral(
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
         <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME1">%Temperatur_BME1%</span>
-        <sup class="Einheit">&deg;C</sup>
+        <sup class="unit">&deg;C</sup>
       </p>
       <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
         <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME1">%Feuchte_BME1%</span>
-        <sup class="Einheit">&percnt;</sup>
+        <sup class="unit">&percnt;</sup>
       </p>
       <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
         <span class="BMEvalues">Druck</span>
         <span id="Druck_BME1">%Druck_BME1%</span>
-        <sup class="Einheit">hPa</sup>
+        <sup class="unit">hPa</sup>
       </p>
       <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
         <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME1">%rssi_BME1%</span>
-        <sup class="Einheit">dBm</sup>
+        <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
@@ -384,32 +384,32 @@ const char index_html[] PROGMEM = R"rawliteral(
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
         <span class="BMEvalues">Temperatur</span> 
         <span id="Temperatur_BME2"></span>
-        <sup class="Einheit">&deg;C</sup>
+        <sup class="unit">&deg;C</sup>
       </p>
       <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
         <span class="BMEvalues">Feuchte</span>
         <span id="Feuchte_BME2"></span>
-        <sup class="Einheit">&percnt;</sup>
+        <sup class="unit">&percnt;</sup>
       </p>
       <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
         <span class="BMEvalues">Druck</span>
         <span id="Druck_BME2"></span>
-        <sup class="Einheit">hPa</sup>
+        <sup class="unit">hPa</sup>
       </p>
       <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
         <span class="BMEvalues">Verbindung</span>
         <span id="rssi_BME2"></span>
-        <sup class="Einheit">dBm</sup>
+        <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
   <div class="content" id="OpenWeather">
     <h2 class="head">Open Weather Map</h2>
     <div class="values_depiction">
-      <form class="suche">
+      <form class="search">
         <label for="input_City">City</label>
         <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
         
@@ -417,7 +417,7 @@ const char index_html[] PROGMEM = R"rawliteral(
         <input type="text" id="input_land" value="DE" placeholder="ISO 3166 Code">
         
         
-        <input type="button" onclick="suche();" value="suchen">  
+        <input type="button" onclick="search();" value="suchen">  
       </form>
       <p class="City">
         <h3 class="City_name" id="Name">Name</h3>
@@ -498,7 +498,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 function Anzeige(id){
   
   if(id == "OpenWeather"){
-    suche();
+    search();
   }
   if(!(id == " WeatherApp")){
     Burger_menu();
@@ -537,7 +537,7 @@ setInterval(function(){
   document.getElementById("time").innerHTML = (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
   document.getElementById("date").innerHTML = (("0"+dt.getDate()).slice(-2) +"."+ ("0"+(dt.getMonth()+1)).slice(-2))   +"."+ (dt.getFullYear());
 },100);
-function suche(){
+function search(){
   
   
   const request = new XMLHttpRequest();
