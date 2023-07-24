@@ -2,7 +2,7 @@
 
 This project involves displaying BMI data from two NodeMCUs with BMI sensors. The first NodeMCU acts as the main Node and hosts the web server, displaying the BMI data. This NodeMCU also uses the OpenWeather API to display weather data for any city searched by the user. Additionally, the user can get cat pictures through another API and change the background and the city of which the weather data is displayed on the home screen in the settings.
 
-The second NodeMCU connects to the internet and uploads its BMI data to ThingSpeak, where the first NodeMCU can obtain it using the ThingSpeak API.
+The second NodeMCU connects to the internet and uploads its BMI data to ThingSpeak, where the first NodeMCU can obtain it using the ThingSpeak API. By copying the used concepts, more Nodes can be added.
 
 
 
