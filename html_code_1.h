@@ -311,6 +311,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   </style>
 </head>
 <body>
+
   <div class="topnav" id="myTopnav">
     <a class="active" onclick="display(' WeatherApp')"> WeatherApp</a>
     <a onclick="display('OpenWeather')">OpenWeather</a>
@@ -326,6 +327,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     <a onclick="display('Settings')">Settings</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
+
   <div class="content"id=" WeatherApp">
     <h1 class="head_time" id="time">TIME</h1>
     <h2 class="head_date" id="date">Date</h2>
