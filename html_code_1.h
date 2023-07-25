@@ -71,7 +71,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       background-color: rgba(52, 52, 52, 1);
       padding-top: 2vh;
       height: 100vh;
-      width: 100%%; //needs another % so that the NodeMCU template compiler can read it
+      width: 100%%; /*/needs another % so that the NodeMCU template compiler can read it/*/
       color: var(--text-color);
     }
     .Settings_fields{
@@ -251,7 +251,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       text-align: center;
       justify-content: center;
     }
-    # WeatherApp{
+    #WeatherApp{
       display: block;
     }
   .values_depiction{
@@ -312,23 +312,23 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <div class="topnav" id="myTopnav">
-    <a class="active" onclick="Anzeige(' WeatherApp')"> WeatherApp</a>
-    <a onclick="Anzeige('OpenWeather')">OpenWeather</a>
+    <a class="active" onclick="display(' WeatherApp')"> WeatherApp</a>
+    <a onclick="display('OpenWeather')">OpenWeather</a>
     <div class="dropdown">
-      <button class="dropbtn">BME Sensoren 
+      <button class="dropbtn">BME Sensors 
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="#" onclick="Anzeige('BME1')">BME 1</a>
-        <a onclick="Anzeige('BME2')">BME 2</a>
+        <a href="#" onclick="display('BME1')">BME 1</a>
+        <a onclick="display('BME2')">BME 2</a>
       </div>
     </div> 
-    <a onclick="Anzeige('Settings')">Settings</a>
+    <a onclick="display('Settings')">Settings</a>
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
   <div class="content"id=" WeatherApp">
-    <h1 class="head_time" id="time">ZEIT</h1>
-    <h2 class="head_date" id="date">Datum</h2>
+    <h1 class="head_time" id="time">TIME</h1>
+    <h2 class="head_date" id="date">Date</h2>
     <div class="values_depiction">
       <p class="City_homepage">
         <h2 class="City_name" id="Name_homepage">Name</h2>
@@ -478,7 +478,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     }
     document.getElementById("savebutton").style.border = "2px solid lime";
     homepage();
-    setTimeout(function(){Anzeige(" WeatherApp")}, 100);
+    setTimeout(function(){display(" WeatherApp")}, 100);
     
   }
 
@@ -495,7 +495,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     }
   } 
 
-function Anzeige(id){
+function display(id){
   
   if(id == "OpenWeather"){
     search();
