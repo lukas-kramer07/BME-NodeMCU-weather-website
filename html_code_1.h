@@ -71,7 +71,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       background-color: rgba(52, 52, 52, 1);
       padding-top: 2vh;
       height: 100vh;
-      width: 100%%; //library braucht doppelte %, weil der template processor diesen css code ansonsten nicht verarbeitet
+      width: 100%%; //needs another % so that the NodeMCU template compiler can read it
       color: var(--text-color);
     }
     .Settings_fields{
