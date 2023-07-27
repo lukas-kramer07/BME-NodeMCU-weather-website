@@ -313,7 +313,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 <body>
 
   <div class="topnav" id="myTopnav">
-    <a class="active" onclick="display(' WeatherApp')"> WeatherApp</a>
+    <a class="active" onclick="display('WeatherApp')">WeatherApp</a>
     <a onclick="display('OpenWeather')">OpenWeather</a>
     <div class="dropdown">
       <button class="dropbtn">BME Sensors 
@@ -328,7 +328,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Burger_menu()">&#9776;</a>
   </div>
 
-  <div class="content"id=" WeatherApp">
+  <div class="content"id="WeatherApp">
     <h1 class="head_time" id="time">TIME</h1>
     <h2 class="head_date" id="date">Date</h2>
     <div class="values_depiction">
@@ -337,14 +337,14 @@ const char index_html[] PROGMEM = R"rawliteral(
         <pre id="coord_homepage">coord</pre>
       </p>
       <p class="values_ow">
-        <span name="Name" class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung_homepage"></span><br>
-        <span name="Name" class="ow_left">Temperatur</span><span class="ow_right" id="Temp_homepage"></span><br>
-        <span class="ow_left">Temperatur Verlauf</span><span class="ow_right">
+        <span name="Name" class="ow_left">Description</span><span class="ow_right" id="Description_homepage"></span><br>
+        <span name="Name" class="ow_left">Temperature</span><span class="ow_right" id="Temp_homepage"></span><br>
+        <span class="ow_left">Temperature Course</span><span class="ow_right">
           <span id="Temp_min_homepage"></span> - <span id="Temp_max_homepage"></span>
         </span><br>
-        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte_homepage"></span><br>
-        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck_homepage"></span><br>
-        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind_homepage"></span><br>
+        <span class="ow_left">Humidity</span><span class="ow_right" id="Humidity_homepage"></span><br>
+        <span class="ow_left">Pressure</span><span class="ow_right" id="Pressure_homepage"></span><br>
+        <span class="ow_left">Wind speed</span><span class="ow_right" id="Wind_homepage"></span><br>
         
       </p>
     </div>
@@ -355,20 +355,20 @@ const char index_html[] PROGMEM = R"rawliteral(
     <div class="values_depiction">
       <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BMEvalues">Temperatur</span> 
-        <span id="Temperatur_BME1">%Temperatur_BME1%</span>
+        <span class="BMEvalues">Temperature</span> 
+        <span id="Temperature_BME1">%Temperature_BME1%</span>
         <sup class="unit">&deg;C</sup>
       </p>
       <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BMEvalues">Feuchte</span>
-        <span id="Feuchte_BME1">%Feuchte_BME1%</span>
+        <span class="BMEvalues">Humidity</span>
+        <span id="Humidity_BME1">%Humidity_BME1%</span>
         <sup class="unit">&percnt;</sup>
       </p>
       <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BMEvalues">Druck</span>
-        <span id="Druck_BME1">%Druck_BME1%</span>
+        <span class="BMEvalues">Pressure</span>
+        <span id="Pressure_BME1">%Pressure_BME1%</span>
         <sup class="unit">hPa</sup>
       </p>
       <p class="value">
@@ -384,20 +384,20 @@ const char index_html[] PROGMEM = R"rawliteral(
     <div class="values_depiction">
       <p class="value">
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
-        <span class="BMEvalues">Temperatur</span> 
-        <span id="Temperatur_BME2"></span>
+        <span class="BMEvalues">Temperature</span> 
+        <span id="Temperature_BME2"></span>
         <sup class="unit">&deg;C</sup>
       </p>
       <p class="value">
         <i class="fas fa-tint" style="color:#00add6;"></i> 
-        <span class="BMEvalues">Feuchte</span>
-        <span id="Feuchte_BME2"></span>
+        <span class="BMEvalues">Humidity</span>
+        <span id="Humidity_BME2"></span>
         <sup class="unit">&percnt;</sup>
       </p>
       <p class="value">
         <i class="fa-solid fa-arrows-to-circle" style="color:#002050;"></i> 
-        <span class="BMEvalues">Druck</span>
-        <span id="Druck_BME2"></span>
+        <span class="BMEvalues">Pressure</span>
+        <span id="Pressure_BME2"></span>
         <sup class="unit">hPa</sup>
       </p>
       <p class="value">
@@ -426,11 +426,11 @@ const char index_html[] PROGMEM = R"rawliteral(
         <pre id="coord">coord</pre>
       </p>
       <p class="values_ow">
-        <span class="ow_left">Beschreibung</span><span class="ow_right" id="Beschreibung"></span><br>
-        <span class="ow_left">Temperatur</span><span class="ow_right" id="Temp"></span><br>
-        <span class="ow_left">Luftfeuchte</span><span class="ow_right" id="Feuchte"></span><br>
-        <span class="ow_left">Luftdruck</span><span class="ow_right" id="Druck"></span><br>
-        <span class="ow_left">Windgeschwindigkeit</span><span class="ow_right" id="Wind"></span><br>
+        <span class="ow_left">Description</span><span class="ow_right" id="Description"></span><br>
+        <span class="ow_left">Temperature</span><span class="ow_right" id="Temp"></span><br>
+        <span class="ow_left">Humidity</span><span class="ow_right" id="Humidity"></span><br>
+        <span class="ow_left">Pressure</span><span class="ow_right" id="Pressure"></span><br>
+        <span class="ow_left">Wind speed</span><span class="ow_right" id="Wind"></span><br>
       </p>
     </div>
     <br>
@@ -480,7 +480,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     }
     document.getElementById("savebutton").style.border = "2px solid lime";
     homepage();
-    setTimeout(function(){display(" WeatherApp")}, 100);
+    setTimeout(function(){display("WeatherApp")}, 100);
     
   }
 
@@ -502,7 +502,7 @@ function display(id){
   if(id == "OpenWeather"){
     search();
   }
-  if(!(id == " WeatherApp")){
+  if(!(id == "WeatherApp")){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
@@ -522,7 +522,7 @@ function display(id){
 
 
 function hide_content(){
-  document.getElementById(" WeatherApp").style.display = "none";
+  document.getElementById("WeatherApp").style.display = "none";
   document.getElementById("BME1").style.display = "none";
   document.getElementById("BME2").style.display = "none";
   document.getElementById("OpenWeather").style.display = "none";
@@ -531,7 +531,7 @@ function hide_content(){
 window.onload= ()=>{
   hide_content();
   homepage();
-  document.getElementById(" WeatherApp").style.display = "block";
+  document.getElementById("WeatherApp").style.display = "block";
 }
 
 setInterval(function(){
@@ -570,10 +570,10 @@ function search(){
           }
         }
         
-        document.getElementById("Beschreibung").innerHTML = Ergebnis.weather[0].description;
+        document.getElementById("Description").innerHTML = Ergebnis.weather[0].description;
         document.getElementById("Temp").innerHTML = Ergebnis.main.temp + " " + "&degC";
-        document.getElementById("Feuchte").innerHTML = Ergebnis.main.humidity + " %";
-        document.getElementById("Druck").innerHTML = Ergebnis.main.pressure + " hPa";
+        document.getElementById("Humidity").innerHTML = Ergebnis.main.humidity + " %";
+        document.getElementById("Pressure").innerHTML = Ergebnis.main.pressure + " hPa";
         document.getElementById("Wind").innerHTML = Ergebnis.wind.speed + " m/s";
       }
       
@@ -594,10 +594,10 @@ function search(){
 
 function Bielefeld(){
   document.getElementById("Name").innerHTML = "Bielefeld?";
-  document.getElementById("Beschreibung").innerHTML = "Error 404: Not found";
+  document.getElementById("Description").innerHTML = "Error 404: Not found";
   document.getElementById("Temp").innerHTML = "Error 404: Not found";
-  document.getElementById("Feuchte").innerHTML =  "Error 404: Not found";
-  document.getElementById("Druck").innerHTML = "Error 404: Not found";
+  document.getElementById("Humidity").innerHTML =  "Error 404: Not found";
+  document.getElementById("Pressure").innerHTML = "Error 404: Not found";
   document.getElementById("Wind").innerHTML = "Error 404: Not found";
   document.getElementById("coord").innerHTML = "Error 404: Not found";
 }
@@ -629,12 +629,12 @@ function homepage(){
         }
       }
       
-      document.getElementById("Beschreibung_homepage").innerHTML = Ergebnis.weather[0].description;
+      document.getElementById("Description_homepage").innerHTML = Ergebnis.weather[0].description;
       document.getElementById("Temp_homepage").innerHTML = Ergebnis.main.temp + " " + "&degC";
       document.getElementById("Temp_min_homepage").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
       document.getElementById("Temp_max_homepage").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
-      document.getElementById("Feuchte_homepage").innerHTML = Ergebnis.main.humidity + " %";
-      document.getElementById("Druck_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
+      document.getElementById("Humidity_homepage").innerHTML = Ergebnis.main.humidity + " %";
+      document.getElementById("Pressure_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
       document.getElementById("Wind_homepage").innerHTML = Ergebnis.wind.speed + " m/s";
       
       
@@ -656,9 +656,9 @@ setInterval(function (){
     if(this.status == 200){
       var Ergebnis = JSON.parse(this.responseText);
       if(!Ergebnis.feeds[0].field1 == 0){
-        document.getElementById("Temperatur_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field2 *1000)/1000;
-        document.getElementById("Druck_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field4 *100)/100;
-        document.getElementById("Feuchte_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field3 *100)/100;
+        document.getElementById("Temperature_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field2 *1000)/1000;
+        document.getElementById("Pressure_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field4 *100)/100;
+        document.getElementById("Humidity_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field3 *100)/100;
         document.getElementById("rssi_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field1 *100)/100;
       }
       
@@ -683,10 +683,10 @@ setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("Temperatur_BME1").innerHTML = this.responseText;
+      document.getElementById("Temperature_BME1").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/Temperatur_BME1", true);
+  xhttp.open("GET", "/Temperature_BME1", true);
   xhttp.send();
 }, 10000 ) ;
 
@@ -694,10 +694,10 @@ setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("Druck_BME1").innerHTML = this.responseText;
+      document.getElementById("Pressure_BME1").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/Druck_BME1", true);
+  xhttp.open("GET", "/Pressure_BME1", true);
   xhttp.send();
 }, 10000 ) ;
 
@@ -705,10 +705,10 @@ setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("Feuchte_BME1").innerHTML = this.responseText;
+      document.getElementById("Humidity_BME1").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "/Feuchte_BME1", true);
+  xhttp.open("GET", "/Humidity_BME1", true);
   xhttp.send();
 }, 10000 ) ;
 setInterval(function ( ) {
