@@ -5,7 +5,7 @@
 // Import der benötigten libraries und header Dateien
 #include <ESP8266WiFi.h>  //WiFi Library
 #include <ESPAsyncTCP.h>  //Libraries für den Asynchronen Webserver
-#include <ESPAsyncWebServer.h>
+#include <ESPAsyncWebSrv.h>
 #include <BME280I2C.h>    //BME Libraries 
 #include <Wire.h>
 #include <ThingSpeak.h>   //ThingSpeak Library
@@ -24,7 +24,7 @@ const char* ssid_HotSpot = "";   // Enter SSID here
 const char* password_HotSpot = ""; // Enter Password here
 
 //Apikey und channelId für ThingSpeak Upload
-unsigned long channelID = ;
+unsigned long channelID = _;
 const char*  writeAPIKey = "";
 
 
