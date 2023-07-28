@@ -413,8 +413,8 @@
       <form class="search">
         <label for="input_City">City</label>
         <input type="text" id="input_City" value="Karlsruhe" placeholder="City">
-        <label for="input_land">Country</label>
-        <input type="text" id="input_land" value="DE" placeholder="ISO 3166 Code">
+        <label for="input_country">Country</label>
+        <input type="text" id="input_country" value="DE" placeholder="ISO 3166 Code">
         <input type="button" onclick="search();" value="search">  
       </form>
       <p class="City">
@@ -442,26 +442,25 @@
             <input oninput="save_rot()" type="text" id="input_url" placeholder="enter url here">
             <label for="preset">Presets</label>
             <select class="select" onchange="save_rot()" id="preset">
-              <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Wolken</option>
-              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City Tag</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City Nacht</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">Sterne</option>
+              <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Clouds</option>
+              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City day</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City night</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">stars</option>
             </select>
           </div>
           
         <h3 class="Settings_head">Homepage</h3>
           <div class="Settings_input">
             <label for="input_url">depicted City</label>
-            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="hier City eingeben" value="Knielingen">
-            <input oninput="save_rot()" type="text" id="input_land_homepage" placeholder="hier Laendercode eingeben" value="DE">
+            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="Enter City here" value="Knielingen">
+            <input oninput="save_rot()" type="text" id="input_country_homepage" placeholder="Enter country code here" value="DE">
           </div>
-      <button onclick="save()" id="savebutton" class="save">Speichern</button>
-      
-      
+      <button onclick="save()" id="savebutton" class="save">Save</button>
     </div>
-
   </div>
+
 </body>
+
 <script>
                           
   var OpeanWeatherKey = "";
@@ -582,7 +581,7 @@ function search(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City").value;
-  var Laendercode = document.getElementById("input_land").value;
+  var Laendercode = document.getElementById("input_country").value;
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 
@@ -642,7 +641,7 @@ function homepage(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City_homepage").value;
-  var Laendercode = document.getElementById("input_land_homepage").value;
+  var Laendercode = document.getElementById("input_country_homepage").value;
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
