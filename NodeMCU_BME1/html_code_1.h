@@ -1,4 +1,4 @@
-//The html code for the website
+//The html code for the website; saved as a raw String for the AsyncWebserver Template compiler
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
