@@ -17,7 +17,7 @@ WiFiClient client;
 
 // password and SSid for local network
 String ssid = SSId;
-String passwort = PASSWORD;
+String password = PASSWORD;
 
 // password and SSid for HotSpot
 const char* ssid_HotSpot = "";   // Enter SSID here
@@ -35,25 +35,25 @@ long Reset = 0;
 //========================================================================================================================================================================================================
 
 //Website BME request
-String Request_BME(String Wert) {
+String Request_BME(String Value) {
     float Pressure, Temp, Humidity;
     bme.read(Pressure, Temp, Humidity);
-    float RWert;
-    if(Wert == "Temperature_BME1"){
-      RWert = Temp;
+    float RValue;
+    if(Value == "Temperature_BME1"){
+      RValue = Temp;
       }
-    else if(Wert == "Pressure_BME1"){
-      RWert = Pressure;
+    else if(Value == "Pressure_BME1"){
+      RValue = Pressure;
     }
-    else if(Wert == "Humidity_BME1"){
-      RWert = Humidity;
+    else if(Value == "Humidity_BME1"){
+      RValue = Humidity;
     }
-    else if(Wert == "rssi_BME1"){
-      RWert = WiFi.RSSI();
+    else if(Value == "rssi_BME1"){
+      RValue = WiFi.RSSI();
       Serial.println(WiFi.RSSI());
-      Serial.println(String(RWert));
+      Serial.println(String(RValue));
     }
-  return String(RWert);
+  return String(RValue);
 }
 
 //BME-values onload
@@ -109,7 +109,7 @@ void Initialization(){
   
   // Connect to Wi-Fi
   ThingSpeak.begin(client);
-  WiFi.begin(ssid, passwort);                     
+  WiFi.begin(ssid, password);                     
   while (WiFi.status() != WL_CONNECTED) { //waiting for WIFI connection
    delay(1000);
    Serial.println("...");
