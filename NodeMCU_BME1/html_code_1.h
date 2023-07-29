@@ -71,7 +71,7 @@ const char index_html[] PROGMEM = R"rawliteral(
       background-color: rgba(52, 52, 52, 1);
       padding-top: 2vh;
       height: 100vh;
-      width: 100%%; /*/needs another % so that the NodeMCU template compiler can read it/*/
+      width: 100%%; 
       color: var(--text-color);
     }
     .Settings_fields{
@@ -349,8 +349,8 @@ const char index_html[] PROGMEM = R"rawliteral(
       </p>
     </div>
   </div>
-  <div class="content"id="BME1">
-    
+
+  <div class="content"id="BME1"> 
     <h2 class="head">BME 1</h2>
     <div class="values_depiction">
       <p class="value">
@@ -373,12 +373,13 @@ const char index_html[] PROGMEM = R"rawliteral(
       </p>
       <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BMEvalues">Verbindung</span>
+        <span class="BMEvalues">Connection</span>
         <span id="rssi_BME1">%rssi_BME1%</span>
         <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
+
   <div class="content" id="BME2">
     <h2 class="head">BME 2</h2>
     <div class="values_depiction">
@@ -402,24 +403,22 @@ const char index_html[] PROGMEM = R"rawliteral(
       </p>
       <p class="value">
         <i class="fas fa-square-rss" style="color:rgb(22, 129, 190);"></i> 
-        <span class="BMEvalues">Verbindung</span>
+        <span class="BMEvalues">Connection</span>
         <span id="rssi_BME2"></span>
         <sup class="unit">dBm</sup>
       </p>
     </div>
   </div>
+
   <div class="content" id="OpenWeather">
     <h2 class="head">Open Weather Map</h2>
     <div class="values_depiction">
       <form class="search">
         <label for="input_City">City</label>
-        <input type="text" id="input_City" value="Karlsruhe" placeholder="Cityname">
-        
-        <label for="input_land">Land</label>
-        <input type="text" id="input_land" value="DE" placeholder="ISO 3166 Code">
-        
-        
-        <input type="button" onclick="search();" value="suchen">  
+        <input type="text" id="input_City" value="Karlsruhe" placeholder="City">
+        <label for="input_country">Country</label>
+        <input type="text" id="input_country" value="DE" placeholder="ISO 3166 Code">
+        <input type="button" onclick="search();" value="search">  
       </form>
       <p class="City">
         <h3 class="City_name" id="Name">Name</h3>
@@ -436,40 +435,40 @@ const char index_html[] PROGMEM = R"rawliteral(
     <br>
     <br>
   </div>
+
   <div id="Settings">
     <h2 class="head" id="Settings_head">Settings</h2>
     <div class="Settings_fields">
-      <h3 class="Settings_head">Allgemein</h3>
+      <h3 class="Settings_head">General</h3>
           <div class="Settings_input">
-            <label for="input_url">Hintergrundbild</label>
-            <input oninput="save_rot()" type="text" id="input_url" placeholder="hier url eingeben">
+            <label for="input_url">Background image</label>
+            <input oninput="save_red()" type="text" id="input_url" placeholder="enter url here">
             <label for="preset">Presets</label>
-            <select class="select" onchange="save_rot()" id="preset">
-              <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Wolken</option>
-              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City Tag</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City Nacht</option>
-              <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">Sterne</option>
+            <select class="select" onchange="save_red()" id="preset">
+              <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Clouds</option>
+              <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City day</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City night</option>
+              <option value="https://cdn.pixabay.com/photo/2016/11/29/02/20/cosmos-1866820_960_720.jpg">stars</option>
             </select>
           </div>
           
-        <h3 class="Settings_head">homepage</h3>
+        <h3 class="Settings_head">Homepage</h3>
           <div class="Settings_input">
-            <label for="input_url">angezeigte City</label>
-            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="hier City eingeben" value="Knielingen">
-            <input oninput="save_rot()" type="text" id="input_land_homepage" placeholder="hier Laendercode eingeben" value="DE">
+            <label for="input_url">depicted City</label>
+            <input oninput="save_red()" type="text" id="input_City_homepage" placeholder="Enter City here" value="Knielingen">
+            <input oninput="save_red()" type="text" id="input_country_homepage" placeholder="Enter country code here" value="DE">
           </div>
-      <button onclick="save()" id="savebutton" class="save">Speichern</button>
-      
-      
+      <button onclick="save()" id="savebutton" class="save">Save</button>
     </div>
-
   </div>
+
 </body>
+
 <script>
                           
-  var OpeanWeatherKey = "";
-  var ThingspeakKey = "";
-                          
+  var OpeanWeatherKey = ""; // enter OW key here
+  var ThingspeakKey = ""; // enter Thingspeak code here
+  var ChannelID = 123; //enter Thingspeak ChannelID here                        
   function save(){
     if(document.getElementById("input_url").value !== ""){
       document.body.style.backgroundImage = "url(" + document.getElementById("input_url").value + ")"
@@ -485,7 +484,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   }
 
 
-  function save_rot(){
+  function save_red(){
     document.getElementById("savebutton").style.border = "2px solid red";
   }
   function Burger_menu() {
@@ -506,7 +505,7 @@ function display(id){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
-    document.getElementById("Settings_head").innerHTML = "Nicht Gespeichert";
+    document.getElementById("Settings_head").innerHTML = "Not Saved";
     document.getElementById("Settings_head").style.color = "red";
   }
   else{
@@ -547,34 +546,34 @@ function search(){
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
-      var Ergebnis = JSON.parse(this.responseText);
+      var Response = JSON.parse(this.responseText);
       if(City == "Bielefeld"){
         Bielefeld();
       }
       else{
-        document.getElementById("Name").innerHTML = Ergebnis.name;
-        if(Ergebnis.coord.lon < 0){
-          if(Ergebnis.coord.lat < 0){
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+        document.getElementById("Name").innerHTML = Response.name;
+        if(Response.coord.lon < 0){
+          if(Response.coord.lat < 0){
+            document.getElementById("coord").innerHTML = Response.coord.lat + "S" + "   " + Response.coord.lon + "W";
           }
           else{
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+            document.getElementById("coord").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "W";
           }
         }
         else{
-          if(Ergebnis.coord.lat < 0){
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+          if(Response.coord.lat < 0){
+            document.getElementById("coord").innerHTML = Response.coord.lat + "S" + "   "  + Response.coord.lon + "E";
           }
           else{
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+            document.getElementById("coord").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "E";
           }
         }
         
-        document.getElementById("Description").innerHTML = Ergebnis.weather[0].description;
-        document.getElementById("Temp").innerHTML = Ergebnis.main.temp + " " + "&degC";
-        document.getElementById("Humidity").innerHTML = Ergebnis.main.humidity + " %";
-        document.getElementById("Pressure").innerHTML = Ergebnis.main.pressure + " hPa";
-        document.getElementById("Wind").innerHTML = Ergebnis.wind.speed + " m/s";
+        document.getElementById("Description").innerHTML = Response.weather[0].description;
+        document.getElementById("Temp").innerHTML = Response.main.temp + " " + "&degC";
+        document.getElementById("Humidity").innerHTML = Response.main.humidity + " %";
+        document.getElementById("Pressure").innerHTML = Response.main.pressure + " hPa";
+        document.getElementById("Wind").innerHTML = Response.wind.speed + " m/s";
       }
       
       
@@ -585,8 +584,8 @@ function search(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City").value;
-  var Laendercode = document.getElementById("input_land").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  var CountryCode = document.getElementById("input_country").value;
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ CountryCode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 
   
@@ -610,32 +609,32 @@ function homepage(){
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
-      var Ergebnis = JSON.parse(this.responseText);
-      document.getElementById("Name_homepage").innerHTML = Ergebnis.name;
-      if(Ergebnis.coord.lon < 0){
-        if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+      var Response = JSON.parse(this.responseText);
+      document.getElementById("Name_homepage").innerHTML = Response.name;
+      if(Response.coord.lon < 0){
+        if(Response.coord.lat < 0){
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "S" + "   " + Response.coord.lon + "W";
         }
         else{
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "W";
         }
       }
       else{
-        if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+        if(Response.coord.lat < 0){
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "S" + "   "  + Response.coord.lon + "E";
         }
         else{
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "E";
         }
       }
       
-      document.getElementById("Description_homepage").innerHTML = Ergebnis.weather[0].description;
-      document.getElementById("Temp_homepage").innerHTML = Ergebnis.main.temp + " " + "&degC";
-      document.getElementById("Temp_min_homepage").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
-      document.getElementById("Temp_max_homepage").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
-      document.getElementById("Humidity_homepage").innerHTML = Ergebnis.main.humidity + " %";
-      document.getElementById("Pressure_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
-      document.getElementById("Wind_homepage").innerHTML = Ergebnis.wind.speed + " m/s";
+      document.getElementById("Description_homepage").innerHTML = Response.weather[0].description;
+      document.getElementById("Temp_homepage").innerHTML = Response.main.temp + " " + "&degC";
+      document.getElementById("Temp_min_homepage").innerHTML = Response.main.temp_min + " " + "&degC";
+      document.getElementById("Temp_max_homepage").innerHTML = Response.main.temp_max + " " + "&degC";
+      document.getElementById("Humidity_homepage").innerHTML = Response.main.humidity + " %";
+      document.getElementById("Pressure_homepage").innerHTML = Response.main.pressure + " hPa";
+      document.getElementById("Wind_homepage").innerHTML = Response.wind.speed + " m/s";
       
       
     }
@@ -645,40 +644,40 @@ function homepage(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City_homepage").value;
-  var Laendercode = document.getElementById("input_land_homepage").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  var CountryCode = document.getElementById("input_country_homepage").value;
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ CountryCode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
-
+//Thingspeak request function
 setInterval(function (){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if(this.status == 200){
-      var Ergebnis = JSON.parse(this.responseText);
-      if(!Ergebnis.feeds[0].field1 == 0){
-        document.getElementById("Temperature_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field2 *1000)/1000;
-        document.getElementById("Pressure_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field4 *100)/100;
-        document.getElementById("Humidity_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field3 *100)/100;
-        document.getElementById("rssi_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field1 *100)/100;
+      var Response = JSON.parse(this.responseText);
+      if(!Response.feeds[0].field1 == 0){
+        document.getElementById("Temperature_BME2").innerHTML = Math.round(Response.feeds[0].field2 *1000)/1000;
+        document.getElementById("Pressure_BME2").innerHTML = Math.round(Response.feeds[0].field4 *100)/100;
+        document.getElementById("Humidity_BME2").innerHTML = Math.round(Response.feeds[0].field3 *100)/100;
+        document.getElementById("rssi_BME2").innerHTML = Math.round(Response.feeds[0].field1 *100)/100;
       }
       
   }
     
     if(this.status == 404){
-      console.log("nix gefunden");
+      console.log("nothing found");
     }
   }
-  var key = '';
-  var channel_id = 1724531;
+  var key = ThingspeakKey;
+  var channel_id = ChannelID;
   entries=1;
-  request.open("GET","https://api.thingspeak.com/channels/1788949/feeds.json?api_key=XE4F8FNYWGRATCIF&results=" +entries, true);
+  request.open("GET","https://api.thingspeak.com/channels/"+ ChannelID +"/feeds.json?api_key="+ThingspeakKey+"&results=" +entries, true);
   request.send(); 
 }, 3000);
-//Funktion zur Abfrage von Thingspeak
+
 
 
 //-----------------------------------------------------------------------------------------------------
-//Funktionen für die Abfrage der BME1 values
+//BME1 value request functions
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
