@@ -35,7 +35,7 @@ long Reset = 0;
 //========================================================================================================================================================================================================
 
 //Website BME request
-String Abfrage_BME(String Wert) {
+String Request_BME(String Wert) {
     float Pressure, Temp, Humidity;
     bme.read(Pressure, Temp, Humidity);
     float RWert;
@@ -59,13 +59,13 @@ String Abfrage_BME(String Wert) {
 //BME-values onload
 String values_onload(const String& var){
   if(var == "Temperature_BME1"){
-    return Abfrage_BME("Temperature_BME1");
+    return Request_BME("Temperature_BME1");
   }
   else if(var == "Humidity_BME1"){
-    return Abfrage_BME("Humidity_BME1");
+    return Request_BME("Humidity_BME1");
   }
   else if(var == "Pressure_BME1"){
-    return Abfrage_BME("Pressure_BME1");
+    return Request_BME("Pressure_BME1");
   }
   else if(var == "rssi_BME1"){
     return String(WiFi.RSSI());
@@ -134,16 +134,16 @@ void setup(){
 
   //Get method routes for BME value requests
   server.on("/Temperature_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Temperature_BME1").c_str());
+    request->send_P(200, "text/plain", Request_BME("Temperature_BME1").c_str());
   });
   server.on("/Humidity_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Humidity_BME1").c_str());
+    request->send_P(200, "text/plain", Request_BME("Humidity_BME1").c_str());
   });
   server.on("/Pressure_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Pressure_BME1").c_str());
+    request->send_P(200, "text/plain", Request_BME("Pressure_BME1").c_str());
   });
   server.on("/rssi_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("rssi_BME1").c_str());
+    request->send_P(200, "text/plain", Request_BME("rssi_BME1").c_str());
   });
 
   //starting the Webserver
