@@ -439,9 +439,9 @@
       <h3 class="Settings_head">General</h3>
           <div class="Settings_input">
             <label for="input_url">Background image</label>
-            <input oninput="save_rot()" type="text" id="input_url" placeholder="enter url here">
+            <input oninput="save_red()" type="text" id="input_url" placeholder="enter url here">
             <label for="preset">Presets</label>
-            <select class="select" onchange="save_rot()" id="preset">
+            <select class="select" onchange="save_red()" id="preset">
               <option value="https://images.unsplash.com/photo-1484199316358-d7acb93729f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80">Clouds</option>
               <option value="https://cdn.pixabay.com/photo/2017/05/11/09/20/shanghai-2303480_960_720.jpg">City day</option>
               <option value="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_960_720.jpg">City night</option>
@@ -452,8 +452,8 @@
         <h3 class="Settings_head">Homepage</h3>
           <div class="Settings_input">
             <label for="input_url">depicted City</label>
-            <input oninput="save_rot()" type="text" id="input_City_homepage" placeholder="Enter City here" value="Knielingen">
-            <input oninput="save_rot()" type="text" id="input_country_homepage" placeholder="Enter country code here" value="DE">
+            <input oninput="save_red()" type="text" id="input_City_homepage" placeholder="Enter City here" value="Knielingen">
+            <input oninput="save_red()" type="text" id="input_country_homepage" placeholder="Enter country code here" value="DE">
           </div>
       <button onclick="save()" id="savebutton" class="save">Save</button>
     </div>
@@ -465,7 +465,7 @@
                           
   var OpeanWeatherKey = "";
   var ThingspeakKey = "";
-                          
+  var ChannelID = _;                        
   function save(){
     if(document.getElementById("input_url").value !== ""){
       document.body.style.backgroundImage = "url(" + document.getElementById("input_url").value + ")"
@@ -481,7 +481,7 @@
   }
 
 
-  function save_rot(){
+  function save_red(){
     document.getElementById("savebutton").style.border = "2px solid red";
   }
   function Burger_menu() {
@@ -502,7 +502,7 @@ function display(id){
     Burger_menu();
   }
   if(document.getElementById("savebutton").style.border == "2px solid red"){
-    document.getElementById("Settings_head").innerHTML = "Nicht Gespeichert";
+    document.getElementById("Settings_head").innerHTML = "Not Saved";
     document.getElementById("Settings_head").style.color = "red";
   }
   else{
@@ -543,34 +543,34 @@ function search(){
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
-      var Ergebnis = JSON.parse(this.responseText);
+      var Response = JSON.parse(this.responseText);
       if(City == "Bielefeld"){
         Bielefeld();
       }
       else{
-        document.getElementById("Name").innerHTML = Ergebnis.name;
-        if(Ergebnis.coord.lon < 0){
-          if(Ergebnis.coord.lat < 0){
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+        document.getElementById("Name").innerHTML = Response.name;
+        if(Response.coord.lon < 0){
+          if(Response.coord.lat < 0){
+            document.getElementById("coord").innerHTML = Response.coord.lat + "S" + "   " + Response.coord.lon + "W";
           }
           else{
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+            document.getElementById("coord").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "W";
           }
         }
         else{
-          if(Ergebnis.coord.lat < 0){
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+          if(Response.coord.lat < 0){
+            document.getElementById("coord").innerHTML = Response.coord.lat + "S" + "   "  + Response.coord.lon + "E";
           }
           else{
-            document.getElementById("coord").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+            document.getElementById("coord").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "E";
           }
         }
         
-        document.getElementById("Description").innerHTML = Ergebnis.weather[0].description;
-        document.getElementById("Temp").innerHTML = Ergebnis.main.temp + " " + "&degC";
-        document.getElementById("Humidity").innerHTML = Ergebnis.main.humidity + " %";
-        document.getElementById("Pressure").innerHTML = Ergebnis.main.pressure + " hPa";
-        document.getElementById("Wind").innerHTML = Ergebnis.wind.speed + " m/s";
+        document.getElementById("Description").innerHTML = Response.weather[0].description;
+        document.getElementById("Temp").innerHTML = Response.main.temp + " " + "&degC";
+        document.getElementById("Humidity").innerHTML = Response.main.humidity + " %";
+        document.getElementById("Pressure").innerHTML = Response.main.pressure + " hPa";
+        document.getElementById("Wind").innerHTML = Response.wind.speed + " m/s";
       }
       
       
@@ -581,8 +581,8 @@ function search(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City").value;
-  var Laendercode = document.getElementById("input_country").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  var CountryCode = document.getElementById("input_country").value;
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ CountryCode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 
   
@@ -606,32 +606,32 @@ function homepage(){
     if(this.status == 200){
       console.log(this.responseText);
       console.log(this.readyState);
-      var Ergebnis = JSON.parse(this.responseText);
-      document.getElementById("Name_homepage").innerHTML = Ergebnis.name;
-      if(Ergebnis.coord.lon < 0){
-        if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   " + Ergebnis.coord.lon + "W";
+      var Response = JSON.parse(this.responseText);
+      document.getElementById("Name_homepage").innerHTML = Response.name;
+      if(Response.coord.lon < 0){
+        if(Response.coord.lat < 0){
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "S" + "   " + Response.coord.lon + "W";
         }
         else{
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "W";
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "W";
         }
       }
       else{
-        if(Ergebnis.coord.lat < 0){
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "S" + "   "  + Ergebnis.coord.lon + "E";
+        if(Response.coord.lat < 0){
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "S" + "   "  + Response.coord.lon + "E";
         }
         else{
-          document.getElementById("coord_homepage").innerHTML = Ergebnis.coord.lat + "N" + "   " + Ergebnis.coord.lon + "E";
+          document.getElementById("coord_homepage").innerHTML = Response.coord.lat + "N" + "   " + Response.coord.lon + "E";
         }
       }
       
-      document.getElementById("Description_homepage").innerHTML = Ergebnis.weather[0].description;
-      document.getElementById("Temp_homepage").innerHTML = Ergebnis.main.temp + " " + "&degC";
-      document.getElementById("Temp_min_homepage").innerHTML = Ergebnis.main.temp_min + " " + "&degC";
-      document.getElementById("Temp_max_homepage").innerHTML = Ergebnis.main.temp_max + " " + "&degC";
-      document.getElementById("Humidity_homepage").innerHTML = Ergebnis.main.humidity + " %";
-      document.getElementById("Pressure_homepage").innerHTML = Ergebnis.main.pressure + " hPa";
-      document.getElementById("Wind_homepage").innerHTML = Ergebnis.wind.speed + " m/s";
+      document.getElementById("Description_homepage").innerHTML = Response.weather[0].description;
+      document.getElementById("Temp_homepage").innerHTML = Response.main.temp + " " + "&degC";
+      document.getElementById("Temp_min_homepage").innerHTML = Response.main.temp_min + " " + "&degC";
+      document.getElementById("Temp_max_homepage").innerHTML = Response.main.temp_max + " " + "&degC";
+      document.getElementById("Humidity_homepage").innerHTML = Response.main.humidity + " %";
+      document.getElementById("Pressure_homepage").innerHTML = Response.main.pressure + " hPa";
+      document.getElementById("Wind_homepage").innerHTML = Response.wind.speed + " m/s";
       
       
     }
@@ -641,21 +641,22 @@ function homepage(){
   }
   var key = OpeanWeatherKey;
   var City = document.getElementById("input_City_homepage").value;
-  var Laendercode = document.getElementById("input_country_homepage").value;
-  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ Laendercode+ "&lang=de&units=metric&appid=" + key, true);
+  var CountryCode = document.getElementById("input_country_homepage").value;
+  request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ CountryCode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
 
+// ThingSpeak request function 
 setInterval(function (){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if(this.status == 200){
-      var Ergebnis = JSON.parse(this.responseText);
-      if(!Ergebnis.feeds[0].field1 == 0){
-        document.getElementById("Temperature_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field2 *1000)/1000;
-        document.getElementById("Pressure_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field4 *100)/100;
-        document.getElementById("Humidity_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field3 *100)/100;
-        document.getElementById("rssi_BME2").innerHTML = Math.round(Ergebnis.feeds[0].field1 *100)/100;
+      var Response = JSON.parse(this.responseText);
+      if(!Response.feeds[0].field1 == 0){
+        document.getElementById("Temperature_BME2").innerHTML = Math.round(Response.feeds[0].field2 *1000)/1000;
+        document.getElementById("Pressure_BME2").innerHTML = Math.round(Response.feeds[0].field4 *100)/100;
+        document.getElementById("Humidity_BME2").innerHTML = Math.round(Response.feeds[0].field3 *100)/100;
+        document.getElementById("rssi_BME2").innerHTML = Math.round(Response.feeds[0].field1 *100)/100;
       }
       
   }
@@ -664,17 +665,17 @@ setInterval(function (){
       console.log("nix gefunden");
     }
   }
-  var key = '';
-  var channel_id = 1724531;
+  var key = ThingspeakKey;
+  var channel_id = ChannelID;
   entries=1;
-  request.open("GET","https://api.thingspeak.com/channels/1788949/feeds.json?api_key=XE4F8FNYWGRATCIF&results=" +entries, true);
+  request.open("GET","https://api.thingspeak.com/channels/"+ channel_id +"/feeds.json?api_key="+key+ "&results=" +entries, true);
   request.send(); 
 }, 3000);
-//Funktion zur Abfrage von Thingspeak
+
 
 
 //-----------------------------------------------------------------------------------------------------
-//Funktionen für die Abfrage der BME1 values
+//request functions BME1
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
