@@ -85,10 +85,10 @@ void Upload_BME(){
   ThingSpeak.setField(4,Humidity);
   int x = ThingSpeak.writeFields(channelID, writeAPIKey);
   if (x == 200) {
-    Serial.println("Die values wurden erfolgreich uebertragen.");
+    Serial.println("the values were transmitted correctly.");
   }
   else {
-    Serial.println("Fehler bei der Uebertragung. Fehlercode " + String(x));
+    Serial.println("error with transmission. Error code " + String(x));
   }
 
 }
@@ -103,7 +103,7 @@ void Initialization(){
 
   while(!bme.begin())   // waiting for BME connection
   {
-    Serial.println("BME280 nicht gefunden!");
+    Serial.println("BME280 not found!");
     delay(1000);
   }
   
@@ -115,7 +115,7 @@ void Initialization(){
    Serial.println("...");
   }
   
-   Serial.println("erstelle HotSpot");
+   Serial.println("creating HotSpot");
    WiFi.softAP(ssid_HotSpot, password_HotSpot); // starting HotSpot with SSID and password
    Serial.println(WiFi.localIP());
 }
@@ -157,7 +157,7 @@ void loop()
 {
   //uploading to Thingspeak every 10 min
   if(millis() > Minute*10 + Reset){
-    Serial.println("Beginn");
+    Serial.println("Start");
     Reset = millis();
     Upload_BME(); 
   }
