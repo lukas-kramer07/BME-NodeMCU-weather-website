@@ -645,7 +645,7 @@ function homepage(){
   request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + City+ ","+ CountryCode+ "&lang=de&units=metric&appid=" + key, true);
   request.send(); 
 }
-
+//Thingspeak request function
 setInterval(function (){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -670,11 +670,11 @@ setInterval(function (){
   request.open("GET","https://api.thingspeak.com/channels/"+ ChannelID +"/feeds.json?api_key="+ThingspeakKey+"&results=" +entries, true);
   request.send(); 
 }, 3000);
-//Funktion zur Abfrage von Thingspeak
+
 
 
 //-----------------------------------------------------------------------------------------------------
-//Funktionen für die Abfrage der BME1 values
+//BME1 value request functions
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
