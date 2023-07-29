@@ -661,13 +661,13 @@ setInterval(function (){
   }
     
     if(this.status == 404){
-      console.log("nix gefunden");
+      console.log("nothing found");
     }
   }
-  var key = '';
-  var channel_id = 1724531;
+  var key = ThingspeakKey;
+  var channel_id = ChannelID;
   entries=1;
-  request.open("GET","https://api.thingspeak.com/channels/1788949/feeds.json?api_key=XE4F8FNYWGRATCIF&results=" +entries, true);
+  request.open("GET","https://api.thingspeak.com/channels/"+ ChannelID +"/feeds.json?api_key="+ThingspeakKey+"&results=" +entries, true);
   request.send(); 
 }, 3000);
 //Funktion zur Abfrage von Thingspeak
