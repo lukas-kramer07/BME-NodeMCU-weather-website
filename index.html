@@ -463,9 +463,9 @@
 
 <script>
                           
-  var OpeanWeatherKey = "";
-  var ThingspeakKey = "";
-  var ChannelID = _;                        
+  var OpeanWeatherKey = ""; // enter OW key here
+  var ThingspeakKey = ""; // enter Thingspeak code here
+  var ChannelID = 123; //enter Thingspeak ChannelID here                        
   function save(){
     if(document.getElementById("input_url").value !== ""){
       document.body.style.backgroundImage = "url(" + document.getElementById("input_url").value + ")"
@@ -646,7 +646,6 @@ function homepage(){
   request.send(); 
 }
 
-// ThingSpeak request function 
 setInterval(function (){
   const request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -665,17 +664,17 @@ setInterval(function (){
       console.log("nix gefunden");
     }
   }
-  var key = ThingspeakKey;
-  var channel_id = ChannelID;
+  var key = '';
+  var channel_id = 1724531;
   entries=1;
-  request.open("GET","https://api.thingspeak.com/channels/"+ channel_id +"/feeds.json?api_key="+key+ "&results=" +entries, true);
+  request.open("GET","https://api.thingspeak.com/channels/1788949/feeds.json?api_key=XE4F8FNYWGRATCIF&results=" +entries, true);
   request.send(); 
 }, 3000);
-
+//Funktion zur Abfrage von Thingspeak
 
 
 //-----------------------------------------------------------------------------------------------------
-//request functions BME1
+//Funktionen für die Abfrage der BME1 values
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
