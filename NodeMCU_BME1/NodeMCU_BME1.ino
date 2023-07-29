@@ -36,17 +36,17 @@ long Reset = 0;
 
 //Abfrage der BME-Werte für die Webseite
 String Abfrage_BME(String Wert) {
-    float Druck, Temp, Feuchte;
-    bme.read(Druck, Temp, Feuchte);
+    float Pressure, Temp, Humidity;
+    bme.read(Pressure, Temp, Humidity);
     float RWert;
-    if(Wert == "Temperatur_BME1"){
+    if(Wert == "Temperature_BME1"){
       RWert = Temp;
       }
-    else if(Wert == "Druck_BME1"){
-      RWert = Druck;
+    else if(Wert == "Pressure_BME1"){
+      RWert = Pressure;
     }
-    else if(Wert == "Feuchte_BME1"){
-      RWert = Feuchte;
+    else if(Wert == "Humidity_BME1"){
+      RWert = Humidity;
     }
     else if(Wert == "rssi_BME1"){
       RWert = WiFi.RSSI();
@@ -58,14 +58,14 @@ String Abfrage_BME(String Wert) {
 
 //BME-Werte beim Laden der Webseite
 String werte_onload(const String& var){
-  if(var == "Temperatur_BME1"){
-    return Abfrage_BME("Temperatur_BME1");
+  if(var == "Temperature_BME1"){
+    return Abfrage_BME("Temperature_BME1");
   }
-  else if(var == "Feuchte_BME1"){
-    return Abfrage_BME("Feuchte_BME1");
+  else if(var == "Humidity_BME1"){
+    return Abfrage_BME("Humidity_BME1");
   }
-  else if(var == "Druck_BME1"){
-    return Abfrage_BME("Druck_BME1");
+  else if(var == "Pressure_BME1"){
+    return Abfrage_BME("Pressure_BME1");
   }
   else if(var == "rssi_BME1"){
     return String(WiFi.RSSI());
@@ -76,13 +76,13 @@ String werte_onload(const String& var){
 
 //Upload der BME-Werte auf ThingSpeak 
 void Upload_BME(){
-  float Druck, Temp, Feuchte;
-  bme.read(Druck, Temp, Feuchte);
+  float Pressure, Temp, Humidity;
+  bme.read(Pressure, Temp, Humidity);
   long rssi = WiFi.RSSI();
   ThingSpeak.setField(1,rssi);
   ThingSpeak.setField(2,Temp);
-  ThingSpeak.setField(3,Druck);
-  ThingSpeak.setField(4,Feuchte);
+  ThingSpeak.setField(3,Pressure);
+  ThingSpeak.setField(4,Humidity);
   int x = ThingSpeak.writeFields(channelID, writeAPIKey);
   if (x == 200) {
     Serial.println("Die Werte wurden erfolgreich uebertragen.");
@@ -133,14 +133,14 @@ void setup(){
 
 
   //Routen für die Get-Methoden für die BME-Werte, welche über Abfrage_BME()ermittelt werden
-  server.on("/Temperatur_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Temperatur_BME1").c_str());
+  server.on("/Temperature_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", Abfrage_BME("Temperature_BME1").c_str());
   });
-  server.on("/Feuchte_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Feuchte_BME1").c_str());
+  server.on("/Humidity_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", Abfrage_BME("Humidity_BME1").c_str());
   });
-  server.on("/Druck_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", Abfrage_BME("Druck_BME1").c_str());
+  server.on("/Pressure_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", Abfrage_BME("Pressure_BME1").c_str());
   });
   server.on("/rssi_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", Abfrage_BME("rssi_BME1").c_str());
