@@ -15,20 +15,20 @@ AsyncWebServer server(80);  //Webserver hosted on Port 80 (HTTP)
 BME280I2C bme;            // I2C protocoll 
 WiFiClient client;
 
-//network password and SSid for local Netwerk
+// password and SSid for local network
 String ssid = SSId;
 String passwort = PASSWORD;
 
-//network password and SSid for HotSpot
+// password and SSid for HotSpot
 const char* ssid_HotSpot = "";   // Enter SSID here
 const char* password_HotSpot = ""; // Enter Password here
 
-//Apikey and channelId for ThingSpeak Upload
+// Apikey and channelId for ThingSpeak Upload
 unsigned long channelID = _;
 const char*  writeAPIKey = "";
 
 
-//variables for Millis Timer
+// variables for Millis Timer
 const long Minute = 60000;
 long Reset = 0;
 
@@ -155,7 +155,7 @@ void setup(){
 //========================================================================================================================================================================================================
 void loop()
 {
-  //uploading to Thingspeak every 10 min
+  // uploading to Thingspeak every 10 min
   if(millis() > Minute*10 + Reset){
     Serial.println("Start");
     Reset = millis();
