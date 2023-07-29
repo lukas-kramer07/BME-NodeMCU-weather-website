@@ -19,15 +19,15 @@ BME280I2C bme;
 //---------------------------------------------------------------------------------------------
 // password and SSid for local network
 String ssid = SSId;
-String passwort = PASSWORT;      
+String password = PASSWORD;      
 
 
 //---------------------------------------------------------------------------------------------
 // Apikey and channelId for ThingSpeak Upload
-unsigned long channelID_neben = ;
-const char*  writeAPIKey_neben = "";
-unsigned long channelID_haupt = ;
-const char*  writeAPIKey_haupt = "";
+unsigned long channelID_secondary = ;
+const char*  writeAPIKey_secondary = "";
+unsigned long channelID_main = ;
+const char*  writeAPIKey_main = "";
 
 
 
@@ -37,29 +37,29 @@ const char*  writeAPIKey_haupt = "";
 //---------------------------------------------------------------------------------------------
 // variables for Millis Timer
 const long Minute = 60000;
-long Reset_neben = 0;
-long Reset_haupt = 0;
+long Reset_secondary = 0;
+long Reset_main = 0;
 
 
 void setup() {
   delay(100);
-  Initialisierung();
+  Initialization();
 }
 
 //---------------------------------------------------------------------------------------------
 void loop()
 {
   // uploading to Thingspeak main channel every 10 min
-  if(millis() > Minute*10 + Reset_haupt){
+  if(millis() > Minute*10 + Reset_main){
     Serial.println("Beginn");
-    Reset_haupt = millis();
-    Upload_BME("haupt"); 
+    Reset_main = millis();
+    Upload_BME("main"); 
   }
   // uploading to Thingspeak secondary channel every 20 sec. The website will request these values
-  if(millis() > Minute*0.3 + Reset_neben){
+  if(millis() > Minute*0.3 + Reset_secondary){
     Serial.println("Beginn");
-    Reset_neben = millis();
-    Upload_BME("neben"); 
+    Reset_secondary = millis();
+    Upload_BME("secondary"); 
   }
 }
 
@@ -67,25 +67,25 @@ void loop()
 //---------------------------------------------------------------------------------------------
 // Thingspeak Upload
 void Upload_BME(String Channel){
-  float Druck, Temp, Feuchte;
-  bme.read(Druck, Temp, Feuchte);
+  float Pressure, Temp, Humidity;
+  bme.read(Pressure, Temp, Humidity);
   long rssi = WiFi.RSSI();
   int x;
   // Secondary channel
-  if(Channel == "neben"){
+  if(Channel == "secondary"){
     ThingSpeak.setField(1, rssi);
     ThingSpeak.setField(2,Temp);
-    ThingSpeak.setField(4,Druck);
-    ThingSpeak.setField(3,Feuchte);
-    x = ThingSpeak.writeFields(channelID_neben, writeAPIKey_neben);
+    ThingSpeak.setField(4,Pressure);
+    ThingSpeak.setField(3,Humidity);
+    x = ThingSpeak.writeFields(channelID_secondary, writeAPIKey_secondary);
   }
   // Main channel
-  else if(Channel == "haupt"){
+  else if(Channel == "main"){
     ThingSpeak.setField(5, rssi);
     ThingSpeak.setField(6,Temp);
-    ThingSpeak.setField(7,Druck);
-    ThingSpeak.setField(8,Feuchte);
-    x = ThingSpeak.writeFields(channelID_haupt, writeAPIKey_haupt);
+    ThingSpeak.setField(7,Pressure);
+    ThingSpeak.setField(8,Humidity);
+    x = ThingSpeak.writeFields(channelID_main, writeAPIKey_main);
   }
   if (x == 200) {
     Serial.println("Die Werte wurden erfolgreich uebertragen.");
@@ -98,22 +98,22 @@ void Upload_BME(String Channel){
 
 //---------------------------------------------------------------------------------------------
 // Initialization and connection 
-void Initialisierung(){
+void Initialization(){
   Serial.begin(9600);
   Wire.begin(D2,D1);
   ThingSpeak.begin(client);
-  WiFi.begin(ssid, passwort);
-  Serial.println("Initialisierung");
-  Serial.print("Versuche eine WLAN-Verbindung herzustellen...");
+  WiFi.begin(ssid, password);
+  Serial.println("Initialization");
+  Serial.print("Wifi connection...");
   while (WiFi.status() != WL_CONNECTED) { // wating for WIFI
     delay(500);
     Serial.print(".");
   };
-  Serial.println("hergestellt.");
+  Serial.println("connected.");
   delay(1000);
   while(!bme.begin())   // waiting for BME
   {
-    Serial.println("BME280 nicht gefunden!");
+    Serial.println("BME280 not found!");
     delay(1000);
 
   }
