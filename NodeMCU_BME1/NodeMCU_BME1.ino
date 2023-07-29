@@ -1,40 +1,40 @@
   /*********
-  Code für den Haupt_NodeMCU, der die Webseite hostet
+  Code for main_NodeMCU hosting the website
 *********/
 
-// Import der benötigten libraries und header Dateien
+// Library and heaeder file import
 #include <ESP8266WiFi.h>  //WiFi Library
-#include <ESPAsyncTCP.h>  //Libraries für den Asynchronen Webserver
+#include <ESPAsyncTCP.h>  //Libraries for Async Webserver
 #include <ESPAsyncWebSrv.h>
 #include <BME280I2C.h>    //BME Libraries 
 #include <Wire.h>
 #include <ThingSpeak.h>   //ThingSpeak Library
 #include "html_code_1.h"        //html code
-#include "Network_1.h"     //Netwerkpasswort und ssid
-AsyncWebServer server(80);  //Webserver wird auf Port 80 (HTTP) gehostet
-BME280I2C bme;            // Es wird das I2C Protokoll verwendet. 
+#include "Network_1.h"     //network password and SSid
+AsyncWebServer server(80);  //Webserver hosted on Port 80 (HTTP) 
+BME280I2C bme;            // I2C protocoll 
 WiFiClient client;
 
-//ssid und Passwort für lokales Netwerk
+//network password and SSid for local Netwerk
 String ssid = SSId;
 String passwort = PASSWORD;
 
-//ssid und Passwort für HotSpot
+//network password and SSid for HotSpot
 const char* ssid_HotSpot = "";   // Enter SSID here
 const char* password_HotSpot = ""; // Enter Password here
 
-//Apikey und channelId für ThingSpeak Upload
+//Apikey and channelId for ThingSpeak Upload
 unsigned long channelID = _;
 const char*  writeAPIKey = "";
 
 
-//variabeln für Millis Timer
+//variables for Millis Timer
 const long Minute = 60000;
 long Reset = 0;
 
 //========================================================================================================================================================================================================
 
-//Abfrage der BME-Werte für die Webseite
+//Website BME request
 String Abfrage_BME(String Wert) {
     float Pressure, Temp, Humidity;
     bme.read(Pressure, Temp, Humidity);
@@ -56,8 +56,8 @@ String Abfrage_BME(String Wert) {
   return String(RWert);
 }
 
-//BME-Werte beim Laden der Webseite
-String werte_onload(const String& var){
+//BME-values onload
+String values_onload(const String& var){
   if(var == "Temperature_BME1"){
     return Abfrage_BME("Temperature_BME1");
   }
@@ -74,7 +74,7 @@ String werte_onload(const String& var){
 }
 //========================================================================================================================================================================================================
 
-//Upload der BME-Werte auf ThingSpeak 
+//Thingspeak upload
 void Upload_BME(){
   float Pressure, Temp, Humidity;
   bme.read(Pressure, Temp, Humidity);
@@ -85,7 +85,7 @@ void Upload_BME(){
   ThingSpeak.setField(4,Humidity);
   int x = ThingSpeak.writeFields(channelID, writeAPIKey);
   if (x == 200) {
-    Serial.println("Die Werte wurden erfolgreich uebertragen.");
+    Serial.println("Die values wurden erfolgreich uebertragen.");
   }
   else {
     Serial.println("Fehler bei der Uebertragung. Fehlercode " + String(x));
@@ -94,14 +94,14 @@ void Upload_BME(){
 }
 
 //========================================================================================================================================================================================================
-//Initialisierung und Verbindungsherstellung
-void Initialisierung(){
+// Initialization and connection
+void Initialization(){
   
   Serial.begin(115200);
 
-  Wire.begin(D2,D1);    // I2C Protokoll wird mit SDA, SCL gestartet
+  Wire.begin(D2,D1);    // I2C protocoll started with SDA, SCL 
 
-  while(!bme.begin())   // Der Programmablauf wartet, bis der bme gefunden wurde
+  while(!bme.begin())   // waiting for BME connection
   {
     Serial.println("BME280 nicht gefunden!");
     delay(1000);
@@ -110,13 +110,13 @@ void Initialisierung(){
   // Connect to Wi-Fi
   ThingSpeak.begin(client);
   WiFi.begin(ssid, passwort);                     
-  while (WiFi.status() != WL_CONNECTED) { //Der Programmablauf wartet, bis eine WiFi-Verbindung hergestelt wurde
+  while (WiFi.status() != WL_CONNECTED) { //waiting for WIFI connection
    delay(1000);
    Serial.println("...");
   }
   
    Serial.println("erstelle HotSpot");
-   WiFi.softAP(ssid_HotSpot, password_HotSpot); // Startet den HotSpot mit der SSID und dem Passwort
+   WiFi.softAP(ssid_HotSpot, password_HotSpot); // starting HotSpot with SSID and password
    Serial.println(WiFi.localIP());
 }
 
@@ -124,15 +124,15 @@ void Initialisierung(){
 //========================================================================================================================================================================================================
 
 void setup(){
-  Initialisierung();
+  Initialization();
   
-  //Route beim Laden der Webseite, BME-Werte und html-code werden zurückgegeben
+  //Rwebsite load route, html code and BME values are sent
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/html", index_html, werte_onload);
+    request->send_P(200, "text/html", index_html, values_onload);
   });
 
 
-  //Routen für die Get-Methoden für die BME-Werte, welche über Abfrage_BME()ermittelt werden
+  //Get method routes for BME value requests
   server.on("/Temperature_BME1", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", Abfrage_BME("Temperature_BME1").c_str());
   });
@@ -146,7 +146,7 @@ void setup(){
     request->send_P(200, "text/plain", Abfrage_BME("rssi_BME1").c_str());
   });
 
-  //Webserver wird gestartet
+  //starting the Webserver
   server.begin();
 }
 
@@ -155,7 +155,7 @@ void setup(){
 //========================================================================================================================================================================================================
 void loop()
 {
-  //Alle 10 Minuten werden die Werte auf ThingSpeak hochgeladen
+  //uploading to Thingspeak every 10 min
   if(millis() > Minute*10 + Reset){
     Serial.println("Beginn");
     Reset = millis();
