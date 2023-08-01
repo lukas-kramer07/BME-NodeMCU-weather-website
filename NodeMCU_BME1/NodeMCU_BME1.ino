@@ -126,7 +126,7 @@ void Initialization(){
 void setup(){
   Initialization();
   
-  //Rwebsite load route, html code and BME values are sent
+  // Website load route, html code and BME values are sent
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/html", index_html, values_onload);
   });
